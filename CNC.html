@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CNC Service Report</title>
+
+<link rel="stylesheet" href="CNC.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+</head>
+
+<body>
+
+<div class="paper" id="report">
+
+<div class="header">
+
+<div class="company">
+<b>PT CNC Disain Nusantara (Surabaya Office)</b><br>
+Graha Pena Building 10th Floor R.1003<br>
+Jl. Frontage Ahmad Yani No.88 Surabaya
+<br>Jawa Timur<br\>
+<br>Indonesia<br\
+>
+</div>
+
+<img src="logo/CNC Design Logos 2025-02.png" class="logo">
+
+</div>
+
+
+<h2>REPORT AFTER SERVICE</h2>
+
+<table>
+
+<tr>
+<td class="label">CSR No</td>
+<td><input type="text" id="csr"></td>
+
+<td class="label">Date</td>
+<td><input type="date" id="date"></td>
+</tr>
+
+<tr>
+<td class="label">Customer</td>
+<td colspan="3"><input type="text"></td>
+</tr>
+
+<tr>
+<td class="label">Address</td>
+<td colspan="3"><input type="text"></td>
+</tr>
+
+<tr>
+<td class="label">Machine Type</td>
+<td><input type="text"></td>
+
+<td class="label">Motor Type</td>
+<td><input type="text"></td>
+</tr>
+
+</table>
+
+
+<h3 class="section">REPORT DETAIL</h3>
+
+<table>
+
+<tr>
+<td>Motor Type</td>
+<td><input type="text"></td>
+
+<td>SN</td>
+<td><input type="text"></td>
+</tr>
+
+</table>
+
+
+<h3 class="section">CHECK MOTOR CONDITION</h3>
+
+
+<table class="autoFit">
+
+
+<tr class="tableHeader">
+
+<th>Testing</th>
+<th>Measurement</th>
+<th>Condition</th>
+
+</tr>
+
+
+<tr>
+<td colspan="3"><b>Resistance of Motor - No broken coils</b></td>
+</tr>
+
+
+<tr>
+<td>Resistance Coil U-V (0.3 Ω)</td>
+<td class="ohmInput">
+<input type="text">
+<span>Ω</span>
+</td>
+<td class="conditionCell">
+<i class="fa-solid fa-circle-xmark conditionIcon bad" onclick="toggleCondition(this)"></i>
+</td>
+</tr>
+
+
+<tr>
+<td>Resistance Coil V-W (0.3 Ω)</td>
+<td class="ohmInput">
+<input type="text">
+<span>Ω</span>
+</td>
+<td class="conditionCell">
+<i class="fa-solid fa-circle-xmark conditionIcon bad" onclick="toggleCondition(this)"></i>
+</td>
+</tr>
+
+
+<tr>
+<td>Resistance Coil W-U (0.3 Ω)</td>
+<td class="ohmInput">
+<input type="text">
+<span>Ω</span>
+</td>
+<td class="conditionCell">
+<i class="fa-solid fa-circle-xmark conditionIcon bad" onclick="toggleCondition(this)"></i>
+</td>
+</tr>
+
+
+<tr>
+<td colspan="3"><b>Insulation Resistance - No Short in coil</b></td>
+</tr>
+
+
+<tr>
+<td>Insulation U-PE</td>
+<td class="ohmInput">
+<input type="text">
+<span>Ω</span>
+</td>
+<td class="conditionCell">
+<i class="fa-solid fa-circle-xmark conditionIcon bad" onclick="toggleCondition(this)"></i>
+</td>
+</tr>
+
+
+<tr>
+<td>Insulation V-PE</td>
+<td class="ohmInput">
+<input type="text">
+<span>Ω</span>
+</td>
+<td class="conditionCell">
+<i class="fa-solid fa-circle-xmark conditionIcon bad" onclick="toggleCondition(this)"></i>
+</td>
+</tr>
+
+
+<tr>
+<td>Insulation W-PE</td>
+<td class="ohmInput">
+<input type="text">
+<span>Ω</span>
+</td>
+<td class="conditionCell">
+<i class="fa-solid fa-circle-xmark conditionIcon bad" onclick="toggleCondition(this)"></i>
+</td>
+</tr>
+
+
+<tr>
+<td>Motor Brake</td>
+
+<td>
+<select>
+<option value="">Select</option>
+<option>Brake can release</option>
+<option>Brake can't release</option>
+</select>
+</td>
+
+<td class="conditionCell">
+<i class="fa-solid fa-circle-xmark conditionIcon bad" onclick="toggleCondition(this)"></i>
+</td>
+
+</tr>
+
+
+<tr>
+
+<td>
+SMI
+<select>
+<option>SMI10</option>
+<option>SMI20</option>
+</select>
+</td>
+
+<td>
+<select>
+<option value="">Select</option>
+<option>SMI can detect</option>
+<option>SMI can't detect</option>
+</select>
+</td>
+
+<td class="conditionCell">
+<i class="fa-solid fa-circle-xmark conditionIcon bad" onclick="toggleCondition(this)"></i>
+</td>
+
+</tr>
+
+
+<tr>
+
+<td>
+
+<select id="encoderType" onchange="updateEncoderMeasurement()">
+
+<option value="">Select Type</option>
+<option value="encoder">Encoder</option>
+<option value="resolver">Resolver</option>
+
+</select>
+
+</td>
+
+<td>
+
+<select id="encoderMeasurement">
+
+<option value="">Select</option>
+
+</select>
+
+</td>
+
+<td class="conditionCell">
+
+<i class="fa-solid fa-circle-xmark conditionIcon bad" onclick="toggleCondition(this)"></i>
+
+</td>
+
+</tr>
+
+
+<tr>
+
+<td>Sensor Temperatur</td>
+
+<td><input type="text"></td>
+
+<td class="conditionCell">
+
+<i class="fa-solid fa-circle-xmark conditionIcon bad" onclick="toggleCondition(this)"></i>
+
+</td>
+
+</tr>
+
+
+
+<tr>
+<td colspan="3"><b>Motor Running Test</b></td>
+</tr>
+
+
+<tr>
+<td colspan="3"><b>Motor Running in Rated Speed</b></td>
+</tr>
+
+
+<tr>
+
+<td>CW Rotation</td>
+
+<td>
+<select>
+<option value="">Select</option>
+<option>Motor can run CW rotation</option>
+<option>Motor can't run CW rotation</option>
+</select>
+</td>
+
+<td class="conditionCell">
+
+<i class="fa-solid fa-circle-xmark conditionIcon bad" onclick="toggleCondition(this)"></i>
+
+</td>
+
+</tr>
+
+
+<tr>
+
+<td>CCW Rotation</td>
+
+<td>
+<select>
+<option value="">Select</option>
+<option>Motor can run CCW rotation</option>
+<option>Motor can't run CCW rotation</option>
+</select>
+</td>
+
+<td class="conditionCell">
+
+<i class="fa-solid fa-circle-xmark conditionIcon bad" onclick="toggleCondition(this)"></i>
+
+</td>
+
+</tr>
+
+
+<tr>
+
+<td>Torque Current Actual</td>
+
+<td><input type="text"></td>
+
+<td class="conditionCell">
+
+<i class="fa-solid fa-circle-xmark conditionIcon bad" onclick="toggleCondition(this)"></i>
+
+</td>
+
+</tr>
+
+</table>
+
+<h3 class="section">ACTION REPORT</h3>
+
+<table id="actionTable">
+
+<tr class="tableHeader">
+<th>Action Taken</th>
+<th>Confirmation</th>
+<th>Information</th>
+</tr>
+
+<tr>
+
+<td>
+<select onchange="updateActionInfo(this)">
+<option value="">Select Action</option>
+<option value="cleaning">Cleaning Motor</option>
+<option value="front">Replacement Front Bearing</option>
+<option value="back">Replacement Back Bearing</option>
+<option value="align">Alignment Encoder</option>
+</select>
+</td>
+
+<td class="conditionCell">
+<i class="fa-solid fa-circle-xmark conditionIcon bad" onclick="toggleCondition(this)"></i>
+</td>
+
+<td class="infoCell"></td>
+
+</tr>
+
+</table>
+
+<button class="noPrint" onclick="addAction()">+ Add Action</button>
+
+<br><br>
+
+<button class="noPrint" onclick="downloadPDF()">Download PDF</button>
+<button class="noPrint" onclick="window.print()">Print</button>
+<button class="noPrint" onclick="sendEmail()">Send to Gmail</button>
+
+<p class="statusLegend">
+
+<span class="goodLegend">
+<i class="fa-solid fa-circle-check"></i> Good Condition / Done
+</span><br>
+
+<span class="badLegend">
+<i class="fa-solid fa-circle-xmark"></i> Bad Condition / No Action
+</span>
+
+<br><br>
+
+<span class="noteText">
+<b>Note:</b> Wire Brake Motor: There is cable connection, it means motor has been repaired before sent to CNC Design Office. Cable has been wired with proper tool by CNC Design.
+</span>
+
+</p>
+
+
+
+<table>
+
+<tr>
+<td>Date</td>
+<td><input type="date" id="dateBottom" readonly></td>
+
+<td>Engineer</td>
+<td>
+
+<select>
+
+<option value="">Select Engineer</option>
+<option>Bagus Kurniawan</option>
+<option>Alvino R.E</option>
+<option>Pangky Ari Wibowo</option>
+<option>Igratius Danurwindo</option>
+
+</select>
+
+</td>
+</tr>
+
+
+<tr>
+
+<td>Service Hour</td>
+<td><input type="text"></td>
+
+<td>Signature</td>
+
+<td>
+<canvas id="signature" width="250" height="70"></canvas>
+</td>
+
+</tr>
+
+</table>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+<script>
+(function(){
+emailjs.init("YOUR_PUBLIC_KEY");
+})();
+</script>
+
+<script src="CNC.js"></script>
+
+</body>
+</html>
