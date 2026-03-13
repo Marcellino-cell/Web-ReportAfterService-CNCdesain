@@ -154,6 +154,8 @@ row.innerHTML=`
 
 async function downloadPDF(){
 
+toggleMotorBrakeRow()
+
 const { jsPDF } = window.jspdf
 
 let report = document.getElementById("report")
@@ -263,4 +265,5 @@ row.style.display = ""
 })
 
 }
+
 
