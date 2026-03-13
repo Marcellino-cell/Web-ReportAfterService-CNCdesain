@@ -150,7 +150,36 @@ row.innerHTML=`
 
 }
 
+function addMotorTest(){
 
+let table = document.getElementById("motorTestTable")
+
+let row = table.insertRow()
+
+row.innerHTML = `
+
+<td>
+<select onchange="updateMotorTest(this)">
+<option value="">Select Test</option>
+<option value="brake">Motor Brake</option>
+<option value="smi">SMI</option>
+<option value="encoder">Encoder / Resolver</option>
+</select>
+</td>
+
+<td class="measurementCell"></td>
+
+<td class="conditionCell">
+<i class="fa-solid fa-circle-xmark conditionIcon bad" onclick="toggleCondition(this)"></i>
+</td>
+
+<td>
+<button onclick="removeRow(this)">Remove</button>
+</td>
+
+`
+
+}
 
 async function downloadPDF(){
 
@@ -250,3 +279,4 @@ alert("Gagal mengirim email")
 })
 
 }
+
