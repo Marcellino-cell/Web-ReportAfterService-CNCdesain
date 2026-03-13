@@ -19,22 +19,16 @@ padding:6px;
 font-size:13px;
 }
 
-table{
-width:100%;
-border-collapse:collapse;
-table-layout:fixed;
+.label{
+font-weight:bold;
+width:150px;
 }
 
-table input{
+input[type="text"],
+input[type="date"]{
 border:none;
-outline:none;
-width:100%;
-background:transparent;
-font-size:14px;
-}
-
-table{
-border-collapse:collapse;
+border-bottom:1px solid #000;
+padding:4px;
 }
 
 td{
@@ -142,5 +136,6 @@ display:block;
 margin-top:6px;
 line-height:1.4;
 }
+
 
 
