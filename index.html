@@ -188,12 +188,17 @@ Jl. Frontage Ahmad Yani No.88 Surabaya
 <td>Motor Brake</td>
 
 <td>
-<select>
+<select id="motorBrakeSelect" onchange="toggleBrakeSection()">
 <option value="">Select</option>
-<option>Brake can release</option>
-<option>Brake can't release</option>
+<option value="yes">Yes</option>
+<option value="no">No</option>
 </select>
 </td>
+
+<td class="conditionCell">
+<i class="fa-solid fa-circle-xmark conditionIcon bad" onclick="toggleCondition(this)"></i>
+</td>
+</tr>
 
 <td class="conditionCell">
 <i class="fa-solid fa-circle-xmark conditionIcon bad" onclick="toggleCondition(this)"></i>
@@ -202,8 +207,7 @@ Jl. Frontage Ahmad Yani No.88 Surabaya
 </tr>
 
 
-<tr>
-
+<tr id="smiRow">
 <td>
 SMI
 <select>
@@ -457,5 +461,6 @@ emailjs.init("YOUR_PUBLIC_KEY");
 </body>
 
 </html>
+
 
 
