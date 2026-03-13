@@ -24,9 +24,12 @@ border-collapse: collapse;
 width:100%;
 }
 
+table, tr, td, th{
+border: none !important;
+}
+
 td, th{
-border:none;
-padding:4px;
+padding:6px;
 }
 
 input[type="text"],
@@ -135,6 +138,7 @@ display:block;
 margin-top:6px;
 line-height:1.4;
 }
+
 
 
 
