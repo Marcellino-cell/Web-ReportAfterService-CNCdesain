@@ -25,10 +25,20 @@ border-collapse:collapse;
 table-layout:fixed;
 }
 
-.label{
-width:130px;
-background:#f7f7f7;
-font-weight:500;
+table input{
+border:none;
+outline:none;
+width:100%;
+background:transparent;
+font-size:14px;
+}
+
+table{
+border-collapse:collapse;
+}
+
+td{
+border:none;
 }
 
 input{
@@ -132,4 +142,5 @@ display:block;
 margin-top:6px;
 line-height:1.4;
 }
+
 
