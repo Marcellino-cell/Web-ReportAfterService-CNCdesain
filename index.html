@@ -57,16 +57,11 @@ Jl. Frontage Ahmad Yani No.88 Surabaya
 </tr>
 
 <tr>
+<td class="label">Machine Type</td>
+<td><input type="text"></td>
+
 <td class="label">Motor Type</td>
-
-<td colspan="3">
-<select>
-<option value="">Select Motor Type</option>
-<option>Servo Motor</option>
-<option>Induction Motor</option>
-</select>
-</td>
-
+<td><input type="text"></td>
 </tr>
 
 </table>
@@ -183,20 +178,81 @@ Jl. Frontage Ahmad Yani No.88 Surabaya
 </td>
 </tr>
 
-<h4>Additional Motor Test</h4>
 
-<table id="motorTestTable">
+<tr>
+<td>Motor Brake</td>
 
-<tr class="tableHeader">
-<th>Test Type</th>
-<th>Measurement</th>
-<th>Condition</th>
-<th>Action</th>
+<td>
+<select>
+<option value="">Select</option>
+<option>Brake can release</option>
+<option>Brake can't release</option>
+</select>
+</td>
+
+<td class="conditionCell">
+<i class="fa-solid fa-circle-xmark conditionIcon bad" onclick="toggleCondition(this)"></i>
+</td>
+
 </tr>
 
-</table>
 
-<button class="noPrint" onclick="addMotorTest()">+ Add Motor Test</button>
+<tr>
+
+<td>
+SMI
+<select>
+<option>SMI10</option>
+<option>SMI20</option>
+</select>
+</td>
+
+<td>
+<select>
+<option value="">Select</option>
+<option>SMI can detect</option>
+<option>SMI can't detect</option>
+</select>
+</td>
+
+<td class="conditionCell">
+<i class="fa-solid fa-circle-xmark conditionIcon bad" onclick="toggleCondition(this)"></i>
+</td>
+
+</tr>
+
+
+<tr>
+
+<td>
+
+<select id="encoderType" onchange="updateEncoderMeasurement()">
+
+<option value="">Select Type</option>
+<option value="encoder">Encoder</option>
+<option value="resolver">Resolver</option>
+
+</select>
+
+</td>
+
+<td>
+
+<select id="encoderMeasurement">
+
+<option value="">Select</option>
+
+</select>
+
+</td>
+
+<td class="conditionCell">
+
+<i class="fa-solid fa-circle-xmark conditionIcon bad" onclick="toggleCondition(this)"></i>
+
+</td>
+
+</tr>
 
 
 <tr>
@@ -271,13 +327,7 @@ Jl. Frontage Ahmad Yani No.88 Surabaya
 
 <td>Torque Current Actual</td>
 
-<td>
-<select>
-<option value="">Select</option>
-<option>Actual Torque (No Load)</option>
-<option>Actual Current (No Load)</option>
-</select>
-</td>
+<td><input type="text"></td>
 
 <td class="conditionCell">
 
@@ -402,6 +452,3 @@ emailjs.init("YOUR_PUBLIC_KEY");
 </body>
 
 </html>
-
-
-
