@@ -20,27 +20,21 @@ font-size:13px;
 }
 
 table{
-border-collapse: collapse;
 width:100%;
+border-collapse:collapse;
+table-layout:fixed;
 }
 
-table, tr, td, th{
-border: none !important;
+.label{
+width:130px;
+background:#f7f7f7;
+font-weight:500;
 }
 
-td, th{
-padding:6px;
-}
-
-input[type="text"],
-input[type="date"],
-select{
+input{
 width:100%;
-border:none;
-outline:none;
-border-bottom:1px solid #000;
-background:transparent;
-padding:4px;
+height:26px;
+box-sizing:border-box;
 }
 
 td,th{border:1px solid #444;padding:4px;word-wrap:break-word;}
@@ -138,7 +132,3 @@ display:block;
 margin-top:6px;
 line-height:1.4;
 }
-
-
-
-
