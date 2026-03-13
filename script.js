@@ -280,3 +280,64 @@ alert("Gagal mengirim email")
 
 }
 
+function updateMotorTest(select){
+
+let measurement = select.parentElement.parentElement.querySelector(".measurementCell")
+
+let value = select.value
+
+measurement.innerHTML=""
+
+if(value==="brake"){
+
+measurement.innerHTML=`
+
+<select>
+<option value="">Select</option>
+<option>Brake can release</option>
+<option>Brake can't release</option>
+</select>
+
+`
+
+}
+
+if(value==="smi"){
+
+measurement.innerHTML=`
+
+<select>
+<option value="">Select</option>
+<option>SMI can detect</option>
+<option>SMI can't detect</option>
+</select>
+
+`
+
+}
+
+if(value==="encoder"){
+
+measurement.innerHTML=`
+
+<select>
+<option value="">Select Type</option>
+<option>Encoder can detect</option>
+<option>Encoder can't detect</option>
+<option>Resolver can detect</option>
+<option>Resolver can't detect</option>
+</select>
+
+`
+
+}
+
+}
+
+function removeRow(btn){
+
+let row = btn.parentElement.parentElement
+
+row.remove()
+
+}
