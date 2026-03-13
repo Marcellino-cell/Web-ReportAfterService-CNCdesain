@@ -84,8 +84,6 @@ document.getElementById("dateBottom").value=today
 
 document.getElementById("csr").value="CSR-"+Date.now()
 
-toggleBrakeSection()
-
 }
 
 
@@ -251,29 +249,4 @@ alert("Gagal mengirim email")
 
 })
 
-function toggleBrakeSection(){
-
-let value = document.getElementById("motorBrakeSelect").value
-
-let smi = document.getElementById("smiRow")
-let encoder = document.getElementById("encoderRow")
-
-if(value === "yes"){
-
-smi.style.display = "table-row"
-encoder.style.display = "table-row"
-
-}else{
-
-smi.style.display = "none"
-encoder.style.display = "none"
-
 }
-
-}
-
-document.addEventListener("DOMContentLoaded", function(){
-
-toggleBrakeSection()
-
-})
