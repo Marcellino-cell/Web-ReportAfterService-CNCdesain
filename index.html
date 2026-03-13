@@ -57,15 +57,14 @@ Jl. Frontage Ahmad Yani No.88 Surabaya
 </tr>
 
 <tr>
+<td class="label">Machine Type</td>
+<td><input type="text"></td>
+
 <td class="label">Motor Type</td>
-<td colspan="3">
-<select id="motorType">
-<option value="">Select Motor Type</option>
-<option value="servo">Servo Motor</option>
-<option value="induction">Induction Motor</option>
-</select>
-</td>
+<td><input type="text"></td>
 </tr>
+
+</table>
 
 
 <h3 class="section">REPORT DETAIL</h3>
@@ -104,7 +103,7 @@ Jl. Frontage Ahmad Yani No.88 Surabaya
 
 
 <tr>
-<td>Resistance Coil U-V (0.3 Ω)</td>
+<td>Resistance Coil U-V</td>
 <td class="ohmInput">
 <input type="text">
 <span>Ω</span>
@@ -116,7 +115,7 @@ Jl. Frontage Ahmad Yani No.88 Surabaya
 
 
 <tr>
-<td>Resistance Coil V-W (0.3 Ω)</td>
+<td>Resistance Coil V-W</td>
 <td class="ohmInput">
 <input type="text">
 <span>Ω</span>
@@ -128,7 +127,7 @@ Jl. Frontage Ahmad Yani No.88 Surabaya
 
 
 <tr>
-<td>Resistance Coil W-U (0.3 Ω)</td>
+<td>Resistance Coil W-U</td>
 <td class="ohmInput">
 <input type="text">
 <span>Ω</span>
@@ -179,17 +178,8 @@ Jl. Frontage Ahmad Yani No.88 Surabaya
 </td>
 </tr>
 
-<tr>
-<td class="label">Motor Brake</td>
-<td colspan="3">
-<select id="motorBrakeToggle" onchange="toggleMotorBrakeRow()">
-<option value="yes">YESS</option>
-<option value="no">NO</option>
-</select>
-</td>
-</tr>
 
-<tr id="motorBrakeRow2">
+<tr>
 <td>Motor Brake</td>
 
 <td>
@@ -460,8 +450,5 @@ emailjs.init("YOUR_PUBLIC_KEY");
 <script src="script.js"></script>
 
 </body>
+
 </html>
-
-
-
-
