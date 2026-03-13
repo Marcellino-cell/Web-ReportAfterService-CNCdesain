@@ -84,6 +84,8 @@ document.getElementById("dateBottom").value=today
 
 document.getElementById("csr").value="CSR-"+Date.now()
 
+toggleBrakeSection()
+
 }
 
 
@@ -270,5 +272,32 @@ encoderRow.style.display = "table-row"
 
 }
 
+function toggleBrakeSection(){
+
+let value = document.getElementById("motorBrakeSelect").value
+
+let smiRow = document.getElementById("smiRow")
+let encoderRow = document.getElementById("encoderRow")
+
+if(value === "no"){
+
+smiRow.style.display = "none"
+encoderRow.style.display = "none"
+
+}else if(value === "yes"){
+
+smiRow.style.display = "table-row"
+encoderRow.style.display = "table-row"
+
+}else{
+
+smiRow.style.display = "none"
+encoderRow.style.display = "none"
+
 }
+
+}
+
+}
+
 
