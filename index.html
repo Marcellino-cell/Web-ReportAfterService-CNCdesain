@@ -183,81 +183,20 @@ Jl. Frontage Ahmad Yani No.88 Surabaya
 </td>
 </tr>
 
+<h4>Additional Motor Test</h4>
 
-<tr>
-<td>Motor Brake</td>
+<table id="motorTestTable">
 
-<td>
-<select>
-<option value="">Select</option>
-<option>Brake can release</option>
-<option>Brake can't release</option>
-</select>
-</td>
-
-<td class="conditionCell">
-<i class="fa-solid fa-circle-xmark conditionIcon bad" onclick="toggleCondition(this)"></i>
-</td>
-
+<tr class="tableHeader">
+<th>Test Type</th>
+<th>Measurement</th>
+<th>Condition</th>
+<th>Action</th>
 </tr>
 
+</table>
 
-<tr>
-
-<td>
-SMI
-<select>
-<option>SMI10</option>
-<option>SMI20</option>
-</select>
-</td>
-
-<td>
-<select>
-<option value="">Select</option>
-<option>SMI can detect</option>
-<option>SMI can't detect</option>
-</select>
-</td>
-
-<td class="conditionCell">
-<i class="fa-solid fa-circle-xmark conditionIcon bad" onclick="toggleCondition(this)"></i>
-</td>
-
-</tr>
-
-
-<tr>
-
-<td>
-
-<select id="encoderType" onchange="updateEncoderMeasurement()">
-
-<option value="">Select Type</option>
-<option value="encoder">Encoder</option>
-<option value="resolver">Resolver</option>
-
-</select>
-
-</td>
-
-<td>
-
-<select id="encoderMeasurement">
-
-<option value="">Select</option>
-
-</select>
-
-</td>
-
-<td class="conditionCell">
-
-<i class="fa-solid fa-circle-xmark conditionIcon bad" onclick="toggleCondition(this)"></i>
-
-</td>
-
-</tr>
+<button class="noPrint" onclick="addMotorTest()">+ Add Motor Test</button>
 
 
 <tr>
@@ -463,5 +402,6 @@ emailjs.init("YOUR_PUBLIC_KEY");
 </body>
 
 </html>
+
 
 
