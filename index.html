@@ -200,14 +200,26 @@ Jl. Frontage Ahmad Yani No.88 Surabaya
 </td>
 </tr>
 
+<tr id="brakeMeasurementRow">
+
+<td>Brake Function</td>
+
+<td>
+<select>
+<option value="">Select</option>
+<option>Brake Can Release</option>
+<option>Brake Can't Release</option>
+</select>
+</td>
+
 <td class="conditionCell">
 <i class="fa-solid fa-circle-xmark conditionIcon bad" onclick="toggleCondition(this)"></i>
 </td>
 
 </tr>
 
-
 <tr id="smiRow">
+
 <td>
 SMI
 <select>
@@ -248,17 +260,13 @@ SMI
 <td>
 
 <select id="encoderMeasurement">
-
 <option value="">Select</option>
-
 </select>
 
 </td>
 
 <td class="conditionCell">
-
 <i class="fa-solid fa-circle-xmark conditionIcon bad" onclick="toggleCondition(this)"></i>
-
 </td>
 
 </tr>
@@ -461,6 +469,7 @@ emailjs.init("YOUR_PUBLIC_KEY");
 </body>
 
 </html>
+
 
 
 
