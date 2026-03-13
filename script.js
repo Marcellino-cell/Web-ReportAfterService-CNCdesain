@@ -150,36 +150,7 @@ row.innerHTML=`
 
 }
 
-function addMotorTest(){
 
-let table = document.getElementById("motorTestTable")
-
-let row = table.insertRow()
-
-row.innerHTML = `
-
-<td>
-<select onchange="updateMotorTest(this)">
-<option value="">Select Test</option>
-<option value="brake">Motor Brake</option>
-<option value="smi">SMI</option>
-<option value="encoder">Encoder / Resolver</option>
-</select>
-</td>
-
-<td class="measurementCell"></td>
-
-<td class="conditionCell">
-<i class="fa-solid fa-circle-xmark conditionIcon bad" onclick="toggleCondition(this)"></i>
-</td>
-
-<td>
-<button onclick="removeRow(this)">Remove</button>
-</td>
-
-`
-
-}
 
 async function downloadPDF(){
 
@@ -277,67 +248,5 @@ alert("Report berhasil dikirim ke Gmail")
 alert("Gagal mengirim email")
 
 })
-
-}
-
-function updateMotorTest(select){
-
-let measurement = select.parentElement.parentElement.querySelector(".measurementCell")
-
-let value = select.value
-
-measurement.innerHTML=""
-
-if(value==="brake"){
-
-measurement.innerHTML=`
-
-<select>
-<option value="">Select</option>
-<option>Brake can release</option>
-<option>Brake can't release</option>
-</select>
-
-`
-
-}
-
-if(value==="smi"){
-
-measurement.innerHTML=`
-
-<select>
-<option value="">Select</option>
-<option>SMI can detect</option>
-<option>SMI can't detect</option>
-</select>
-
-`
-
-}
-
-if(value==="encoder"){
-
-measurement.innerHTML=`
-
-<select>
-<option value="">Select Type</option>
-<option>Encoder can detect</option>
-<option>Encoder can't detect</option>
-<option>Resolver can detect</option>
-<option>Resolver can't detect</option>
-</select>
-
-`
-
-}
-
-}
-
-function removeRow(btn){
-
-let row = btn.parentElement.parentElement
-
-row.remove()
 
 }
