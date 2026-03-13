@@ -255,25 +255,25 @@ function toggleBrakeSection(){
 
 let value = document.getElementById("motorBrakeSelect").value
 
-let brakeRow = document.getElementById("brakeMeasurementRow")
-let smiRow = document.getElementById("smiRow")
-let encoderRow = document.getElementById("encoderRow")
+let smi = document.getElementById("smiRow")
+let encoder = document.getElementById("encoderRow")
 
 if(value === "yes"){
 
-brakeRow.style.display = "table-row"
-smiRow.style.display = "table-row"
-encoderRow.style.display = "table-row"
+smi.style.display = "table-row"
+encoder.style.display = "table-row"
 
 }else{
 
-brakeRow.style.display = "none"
-smiRow.style.display = "none"
-encoderRow.style.display = "none"
+smi.style.display = "none"
+encoder.style.display = "none"
 
 }
 
 }
 
+document.addEventListener("DOMContentLoaded", function(){
 
+toggleBrakeSection()
 
+})
