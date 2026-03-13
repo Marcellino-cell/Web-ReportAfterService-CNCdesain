@@ -379,6 +379,7 @@ SMI
 </table>
 
 <button class="noPrint" onclick="addAction()">+ Add Action</button>
+<button class="noPrint" onclick="removeLastAction()">Remove</button>
 
 <br><br>
 
@@ -437,7 +438,8 @@ SMI
 <td>Signature</td>
 
 <td>
-<canvas id="signature" width="250" height="70"></canvas>
+<canvas id="signature" width="250" height="70"></canvas><br>
+<button class="noPrint" onclick="clearSignature()">Remove</button>
 </td>
 
 </tr>
@@ -459,6 +461,7 @@ emailjs.init("YOUR_PUBLIC_KEY");
 </body>
 
 </html>
+
 
 
 
