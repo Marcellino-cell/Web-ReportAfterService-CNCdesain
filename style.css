@@ -132,3 +132,23 @@ display:block;
 margin-top:6px;
 line-height:1.4;
 }
+
+@media print {
+
+input{
+border:none;
+outline:none;
+background:transparent;
+}
+
+select{
+border:none;
+background:transparent;
+appearance:none;
+}
+
+canvas{
+border:none;
+}
+
+}
