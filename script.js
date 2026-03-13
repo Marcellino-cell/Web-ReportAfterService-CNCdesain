@@ -247,6 +247,20 @@ alert("Report berhasil dikirim ke Gmail")
 
 alert("Gagal mengirim email")
 
+function toggleMotorBrakeRow(){
+
+let value = document.getElementById("motorBrakeToggle").value
+let row = document.getElementById("motorBrakeRow")
+
+if(value === "no"){
+row.style.display = "none"
+}else{
+row.style.display = ""
+}
+
+}
+
 })
 
 }
+
