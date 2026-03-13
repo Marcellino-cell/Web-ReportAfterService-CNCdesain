@@ -249,4 +249,26 @@ alert("Gagal mengirim email")
 
 })
 
+function toggleBrakeSection(){
+
+let value = document.getElementById("motorBrakeSelect").value
+
+let smiRow = document.getElementById("smiRow")
+let encoderRow = document.getElementById("encoderRow")
+
+if(value === "no"){
+
+smiRow.style.display = "none"
+encoderRow.style.display = "none"
+
+}else{
+
+smiRow.style.display = "table-row"
+encoderRow.style.display = "table-row"
+
 }
+
+}
+
+}
+
