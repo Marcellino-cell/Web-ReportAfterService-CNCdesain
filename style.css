@@ -34,10 +34,10 @@ font-weight:500;
 input{
 width:100%;
 height:26px;
-border:none;
-outline:none;
-background:transparent;
-font-size:12px;
+box-sizing:border-box;
+border:none;        /* hilangkan garis */
+outline:none;       /* hilangkan garis saat diklik */
+background:transparent; /* biar menyatu dengan tabel */
 }
 
 td,th{border:1px solid #444;padding:4px;word-wrap:break-word;}
@@ -135,5 +135,6 @@ display:block;
 margin-top:6px;
 line-height:1.4;
 }
+
 
 
