@@ -250,3 +250,22 @@ alert("Gagal mengirim email")
 })
 
 }
+
+function removeLastAction(){
+
+let table = document.getElementById("actionTable")
+
+if(table.rows.length > 2){
+table.deleteRow(-1)
+}
+
+}
+
+function clearSignature(){
+
+const canvas = document.getElementById("signature")
+const ctx = canvas.getContext("2d")
+
+ctx.clearRect(0,0,canvas.width,canvas.height)
+
+}
