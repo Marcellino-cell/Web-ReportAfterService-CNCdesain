@@ -69,17 +69,16 @@ height:70px;
 
 @media print{
 
-.noPrint{display:none !important;}
+.noPrint{
+display:none !important;
+}
 
 .paper{
 width:210mm;
-min-height:297mm;
-background:white;
-margin:auto;
-padding:15px;
-border:1px solid #444;
+height:297mm;
+margin:0;
+border:none;
 }
-
 
 }
 
