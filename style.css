@@ -237,29 +237,18 @@ width:55%;
 width:35%;
 }
 
-@media print {
-
-thead{
-display: table-header-group;
-}
-
-tfoot{
-display: table-footer-group;
-}
-
-tr{
-
 @media print{
 
-thead{
-display: table-header-group;
+.paper{
+width:210mm;
+min-height:297mm;
+}
+
+.section{
+page-break-before: always;
 }
 
 tr{
-page-break-inside: avoid;
-}
-
-}
 page-break-inside: avoid;
 }
 
