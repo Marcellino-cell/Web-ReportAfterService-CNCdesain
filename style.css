@@ -237,3 +237,11 @@ width:55%;
 #actionTable td:nth-child(3){
 width:35%;
 }
+
+table{
+page-break-inside: avoid;
+}
+
+tr{
+page-break-inside: avoid;
+}
