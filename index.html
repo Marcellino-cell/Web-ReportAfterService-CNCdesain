@@ -15,6 +15,7 @@
 </head>
 
 <body>
+
 <div class="paper" id="report">
 
 <div class="header">
@@ -22,14 +23,16 @@
 <div class="company">
 <b>PT CNC Disain Nusantara (Surabaya Office)</b><br>
 Graha Pena Building 10th Floor R.1003<br>
-Jl. Frontage Ahmad Yani No.88 Surabaya<br>
-Jawa Timur<br>
-Indonesia
+Jl. Frontage Ahmad Yani No.88 Surabaya
+<br>Jawa Timur<br\>
+<br>Indonesia<br\
+>
 </div>
 
 <img src="logo/CNC Design Logos 2025-02.png" class="logo">
 
 </div>
+
 
 <h2>REPORT AFTER SERVICE</h2>
 
@@ -45,16 +48,17 @@ Indonesia
 
 <tr>
 <td class="label">Customer</td>
-<td colspan="3"><input type="text" name="customer"></td>
+<td colspan="3"><input type="text"></td>
 </tr>
 
 <tr>
 <td class="label">Address</td>
-<td colspan="3"><input type="text" name="address"></td>
+<td colspan="3"><input type="text"></td>
 </tr>
 
 <tr>
 <td class="label">Motor Type</td>
+
 <td colspan="3">
 <select>
 <option value="">Select Motor Type</option>
@@ -62,45 +66,25 @@ Indonesia
 <option>Induction Motor</option>
 </select>
 </td>
+
 </tr>
+</table>
+
+
+<h3 class="section">REPORT DETAIL</h3>
+
+<table>
 
 <tr>
-<td>Part Number</td>
+<td>Motor Type</td>
 <td><input type="text"></td>
 
-<td>Serial Number</td>
+<td>SN</td>
 <td><input type="text"></td>
 </tr>
 
 </table>
-</thead>
 
-<tbody>
-
-<h3 class="section">REPORT DETAIL</h3>
-
-</div>
-
-<div class="noPrint optionBox">
-
-<span class="optionTitle">Include in PDF / Print:</span>
-
-<label class="optionItem">
-<input type="checkbox" id="optBrake" checked onchange="applyRowOption()">
-Motor Brake
-</label>
-
-<label class="optionItem">
-<input type="checkbox" id="optSMI" checked onchange="applyRowOption()">
-SMI
-</label>
-
-<label class="optionItem">
-<input type="checkbox" id="optType" checked onchange="applyRowOption()">
-Encoder / Resolver
-</label>
-
-</div>
 
 <h3 class="section">CHECK MOTOR CONDITION</h3>
 
@@ -199,7 +183,7 @@ Encoder / Resolver
 </tr>
 
 
-<tr id="rowBrake">
+<tr>
 <td>Motor Brake</td>
 
 <td>
@@ -217,11 +201,11 @@ Encoder / Resolver
 </tr>
 
 
-<tr id="rowSMI">
+<tr>
 
 <td>
+SMI
 <select>
-<option value="">Select SMI</option>
 <option>SMI10</option>
 <option>SMI20</option>
 </select>
@@ -242,7 +226,7 @@ Encoder / Resolver
 </tr>
 
 
-<tr id="rowType">
+<tr>
 
 <td>
 
@@ -277,21 +261,19 @@ Encoder / Resolver
 
 <tr>
 
-<td>Temperature Sensor</td>
+<td>Sensor Temperatur</td>
 
-<td>
-<select>
-<option value="">Select</option>
-<option>Sensor can detect Actual temperature</option>
-<option>Sensor can't detect temperature</option>
-</select>
-</td>
+<td><input type="text"></td>
 
 <td class="conditionCell">
+
 <i class="fa-solid fa-circle-xmark conditionIcon bad" onclick="toggleCondition(this)"></i>
+
 </td>
 
 </tr>
+
+
 
 <tr>
 <td colspan="3"><b>Motor Running Test</b></td>
@@ -344,30 +326,19 @@ Encoder / Resolver
 
 </tr>
 
-<tr>
-<td>Actual Current (No load)</td>
-
-<td class="ohmInput">
-<input type="text">
-<span>Arms</span>
-</td>
-
-<td class="conditionCell">
-<i class="fa-solid fa-circle-xmark conditionIcon bad" onclick="toggleCondition(this)"></i>
-</td>
-</tr>
 
 <tr>
-<td>Actual Torque (No load)</td>
 
-<td class="ohmInput">
-<input type="text">
-<span>Nm</span>
-</td>
+<td>Torque Current Actual</td>
+
+<td><input type="text"></td>
 
 <td class="conditionCell">
+
 <i class="fa-solid fa-circle-xmark conditionIcon bad" onclick="toggleCondition(this)"></i>
+
 </td>
+
 </tr>
 
 </table>
@@ -381,20 +352,16 @@ Encoder / Resolver
 <th>Confirmation</th>
 <th>Information</th>
 </tr>
+
 <tr>
 
 <td>
 <select onchange="updateActionInfo(this)">
 <option value="">Select Action</option>
 <option value="cleaning">Cleaning Motor</option>
-<option value="bearing">Replacement bearing front and rear</option>
+<option value="front">Replacement Front Bearing</option>
+<option value="back">Replacement Back Bearing</option>
 <option value="align">Alignment Encoder</option>
-<option value="encoder">Encoder replacement</option>
-<option value="brake">Brake Replacement</option>
-<option value="smi">SMI Replacement</option>
-<option value="housingFront">Housing Bearing (Front) Recondition</option>
-<option value="housingRear">Housing Bearing (Rear) Recondition</option>
-<option value="seal">Seal Replacement</option>
 </select>
 </td>
 
@@ -409,12 +376,12 @@ Encoder / Resolver
 </table>
 
 <button class="noPrint" onclick="addAction()">+ Add Action</button>
-<button class="noPrint" onclick="removeLastAction()">Remove</button>
 
-<br>
+<br><br>
 
 <button class="noPrint" onclick="downloadPDF()">Download PDF</button>
 <button class="noPrint" onclick="window.print()">Print</button>
+<button class="noPrint" onclick="sendEmail()">Send to Gmail</button>
 
 <p class="statusLegend">
 
@@ -467,8 +434,7 @@ Encoder / Resolver
 <td>Signature</td>
 
 <td>
-<canvas id="signature" width="250" height="70"></canvas><br>
-<button class="noPrint" onclick="clearSignature()">Remove</button>
+<canvas id="signature" width="250" height="70"></canvas>
 </td>
 
 </tr>
@@ -490,9 +456,3 @@ emailjs.init("YOUR_PUBLIC_KEY");
 </body>
 
 </html>
-
-
-
-
-
-
