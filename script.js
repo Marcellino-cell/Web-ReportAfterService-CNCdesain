@@ -173,7 +173,7 @@ const pageHeight = 297
 
 const imgHeight = canvas.height * imgWidth / canvas.width
 
-pdf.addImage(imgData,'PNG',0,0,210,297)
+pdf.addImage(imgData,'PNG',0,0,imgWidth,imgHeight)
 
 pdf.save("CNC_Service_Report.pdf")
 
