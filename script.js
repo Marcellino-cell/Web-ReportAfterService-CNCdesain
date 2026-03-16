@@ -132,12 +132,17 @@ if(value==="housingRear"){
 text="Housing Bearing has been Recondition"
 }
 
-infoCell.innerText = text
+infoCell.innerText=text
 
 }
 
+function addAction(){
 
-row.innerHTML = `
+let table=document.getElementById("actionTable")
+
+let row=table.insertRow()
+
+row.innerHTML=`
 
 <td>
 
@@ -166,6 +171,7 @@ row.innerHTML = `
 
 `
 
+}
 async function downloadPDF(){
 
 applyRowOption()
