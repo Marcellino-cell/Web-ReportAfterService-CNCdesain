@@ -35,22 +35,6 @@ measurement.innerHTML=`
 
 }
 
-if(type==="resolver"){
-
-measurement.innerHTML=`
-
-<option value="">Select</option>
-<option>Resolver can detect</option>
-<option>Resolver can't detect</option>
-
-`
-
-}
-
-}
-
-
-
 const canvas=document.getElementById("signature")
 const ctx=canvas.getContext("2d")
 
