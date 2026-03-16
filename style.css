@@ -253,3 +253,12 @@ page-break-inside: avoid;
 }
 
 }
+
+body{
+margin:0;
+}
+
+.paper{
+max-width:210mm;
+overflow:hidden;
+}
