@@ -101,25 +101,40 @@ let value = select.value
 let text = ""
 
 if(value==="cleaning"){
-text="Motor has Cleaned"
+text="Motor has been cleaned"
 }
 
-if(value==="front"){
-text="Bearing has been replacemented"
-}
-
-if(value==="back"){
-text="Bearing has been replacemented"
+if(value==="bearing"){
+text="Bearing has been replaced"
 }
 
 if(value==="align"){
 text="Motor has been alignmented"
 }
 
-infoCell.innerText=text
-
+if(value==="encoder"){
+text="Encoder replaced"
 }
 
+if(value==="brake"){
+text="Brake replaced"
+}
+
+if(value==="smi"){
+text="SMI replaced"
+}
+
+if(value==="housingFront"){
+text="Housing Bearing has been Recondition"
+}
+
+if(value==="housingRear"){
+text="Housing Bearing has been Recondition"
+}
+
+infoCell.innerText = text
+
+}
 
 
 function addAction(){
