@@ -203,7 +203,6 @@ alert("Gagal mengirim email")
 })
 
 }
-}
 
 function clearSignature(){
 
