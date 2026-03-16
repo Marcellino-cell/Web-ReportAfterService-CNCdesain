@@ -248,6 +248,18 @@ display: table-footer-group;
 }
 
 tr{
+
+@media print{
+
+thead{
+display: table-header-group;
+}
+
+tr{
+page-break-inside: avoid;
+}
+
+}
 page-break-inside: avoid;
 }
 
