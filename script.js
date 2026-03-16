@@ -150,6 +150,18 @@ row.innerHTML=`
 
 }
 
+function removeLastAction(){
+
+let table = document.getElementById("actionTable")
+let rowCount = table.rows.length
+
+// minimal sisakan 1 baris action
+if(rowCount > 2){
+table.deleteRow(rowCount - 1)
+}
+
+}
+
 async function downloadPDF(){
 
 applyRowOption()
