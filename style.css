@@ -22,7 +22,7 @@ font-size:13px;
 table{
 width:100%;
 border-collapse:collapse;
-table-layout:fixed;
+table-layout:auto;
 }
 
 .label{
@@ -206,7 +206,26 @@ height:14px;
 cursor:pointer;
 }
 
+#actionTable th:nth-child(1),
+#actionTable td:nth-child(1){
+width:45%;
+word-break:break-word;
+white-space:normal;
+}
+
+
 .optionBox{
 border-radius:4px;
 box-shadow:0 1px 3px rgba(0,0,0,0.1);
+}
+
+#actionTable th:nth-child(2),
+#actionTable td:nth-child(2){
+width:20%;
+text-align:center;
+}
+
+#actionTable th:nth-child(3),
+#actionTable td:nth-child(3){
+width:35%;
 }
