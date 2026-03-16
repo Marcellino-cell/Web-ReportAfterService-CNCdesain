@@ -2,12 +2,11 @@ body{font-family:Arial;background:#f2f2f2;padding:20px;}
 
 .paper{
 width:210mm;
-height:297mm;
-margin:auto;
-padding:10px;
+min-height:297mm;
 background:white;
+margin:auto;
+padding:15px;
 border:1px solid #444;
-overflow:hidden;
 }
 
 .header{display:flex;justify-content:space-between;margin-bottom:10px;}
@@ -23,7 +22,7 @@ font-size:13px;
 table{
 width:100%;
 border-collapse:collapse;
-table-layout:auto;
+table-layout:fixed;
 }
 
 .label{
@@ -38,11 +37,7 @@ height:26px;
 box-sizing:border-box;
 }
 
-td,th{
-border:1px solid #444;
-padding:2px;
-font-size:12px;
-}
+td,th{border:1px solid #444;padding:4px;word-wrap:break-word;}
 
 .tableHeader{background:#0f9d8a;color:white;}
 
@@ -74,16 +69,17 @@ height:70px;
 
 @media print{
 
-.noPrint{
-display:none !important;
-}
+.noPrint{display:none !important;}
 
 .paper{
 width:210mm;
-height:297mm;
-margin:0;
-border:none;
+min-height:297mm;
+background:white;
+margin:auto;
+padding:15px;
+border:1px solid #444;
 }
+
 
 }
 
@@ -121,12 +117,11 @@ font-size:12px;
 padding-right:20px;
 }
 
-
 input, select{
 width:100%;
 height:26px;
 padding:3px 6px;
-font-size:16px;   /* samakan dengan tulisan tabel */
+font-size:12px;
 box-sizing:border-box;
 }
 
@@ -156,125 +151,4 @@ appearance:none;
 /* Hilangkan border pada signature */
 canvas{
 border:none;
-}
-
-td{
-font-size:16px;
-}
-
-.optionBox{
-background:#f7f7f7;
-padding:8px;
-margin-bottom:10px;
-font-size:13px;
-border:1px solid #ccc;
-}
-
-.optionBox label{
-margin-right:15px;
-cursor:pointer;
-}
-
-select{
-font-size:16px;
-}
-
-.optionBox{
-display:flex;
-align-items:center;
-gap:15px;
-background:#f7f7f7;
-padding:6px 10px;
-margin-bottom:10px;
-border:1px solid #ccc;
-font-size:12px;
-flex-wrap:wrap;
-}
-
-.optionTitle{
-font-weight:bold;
-margin-right:10px;
-}
-
-.optionItem{
-display:flex;
-align-items:center;
-gap:4px;
-white-space:nowrap;
-cursor:pointer;
-}
-
-.optionItem input{
-width:14px;
-height:14px;
-cursor:pointer;
-}
-
-#actionTable th:nth-child(1),
-#actionTable td:nth-child(1){
-width:45%;
-word-break:break-word;
-white-space:normal;
-}
-
-
-.optionBox{
-border-radius:4px;
-box-shadow:0 1px 3px rgba(0,0,0,0.1);
-}
-
-#actionTable th:nth-child(2),
-#actionTable td:nth-child(2){
-width:20%;
-text-align:center;
-}
-
-#actionTable select{
-font-size:13px;
-}
-
-#actionTable td:first-child,
-#actionTable th:first-child{
-width:55%;
-}
-#actionTable th:nth-child(3),
-#actionTable td:nth-child(3){
-width:35%;
-}
-
-@media print{
-
-.paper{
-width:210mm;
-min-height:297mm;
-border:none;
-}
-
-}
-
-.section{
-page-break-before: avoid;
-}
-
-tr{
-page-break-inside: avoid;
-}
-
-}
-
-body{
-margin:0;
-}
-
-
-max-width:210mm;
-overflow:hidden;
-}
-
-table{
-page-break-inside: avoid;
-}
-
-.autoFit tr{
-height:16px;
 }
