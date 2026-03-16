@@ -245,3 +245,20 @@ page-break-inside: avoid;
 tr{
 page-break-inside: avoid;
 }
+
+.paper{
+width:210mm;
+min-height:297mm;
+margin:auto;
+background:white;
+padding:15px;
+box-sizing:border-box;
+}
+
+table{
+page-break-inside: avoid;
+}
+
+tr{
+page-break-inside: avoid;
+}
