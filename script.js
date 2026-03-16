@@ -200,7 +200,6 @@ alert("Gagal mengirim email")
 })
 
 }
-}
 
 function clearSignature(){
 
@@ -227,5 +226,15 @@ function printReport(){
 
 applyRowOption()
 window.print()
+
+}
+
+function removeLastAction(){
+
+let table = document.getElementById("actionTable")
+
+if(table.rows.length > 2){
+table.deleteRow(table.rows.length - 1)
+}
 
 }
