@@ -243,8 +243,10 @@ width:35%;
 .paper{
 width:210mm;
 min-height:297mm;
+border:none;
 }
 
+}
 .section{
 page-break-before: always;
 }
@@ -259,6 +261,31 @@ body{
 margin:0;
 }
 
+@media (max-width:768px){
+
+body{
+padding:5px;
+}
+
+.paper{
+width:100%;
+padding:10px;
+border:none;
+}
+
+table{
+font-size:12px;
+}
+
+input,select{
+font-size:12px;
+}
+
+.logo{
+width:120px;
+}
+
+}
 .paper{
 max-width:210mm;
 overflow:hidden;
