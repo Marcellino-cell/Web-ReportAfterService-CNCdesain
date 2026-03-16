@@ -152,8 +152,6 @@ row.innerHTML=
 
 async function downloadPDF(){
 
-applyRowOption()
-
 const { jsPDF } = window.jspdf
 
 let report = document.getElementById("report")
@@ -198,67 +196,21 @@ let customer = document.querySelector("input[name='customer']")?.value || ""
 let address = document.querySelector("input[name='address']")?.value || ""
 
 let templateParams = {
-
 csr: csr,
 date: date,
 customer: customer,
 address: address
-
 }
 
 emailjs.send("YOUR_SERVICE_ID","YOUR_TEMPLATE_ID",templateParams)
 
 .then(function(response){
-
 alert("Report berhasil dikirim ke Gmail")
-
 }, function(error){
-
 alert("Gagal mengirim email")
-
 })
 
 }
-
-function sendEmail(){
-
-let csr = document.getElementById("csr").value
-let date = document.getElementById("date").value
-
-let customer = document.querySelector("input[name='customer']")?.value || ""
-let address = document.querySelector("input[name='address']")?.value || ""
-
-let templateParams = {
-
-csr: csr,
-date: date,
-customer: customer,
-address: address
-
-}
-
-emailjs.send("YOUR_SERVICE_ID","YOUR_TEMPLATE_ID",templateParams)
-
-.then(function(response){
-
-alert("Report berhasil dikirim ke Gmail")
-
-}, function(error){
-
-alert("Gagal mengirim email")
-
-})
-
-}
-
-function removeLastAction(){
-
-let table = document.getElementById("actionTable")
-
-if(table.rows.length > 2){
-table.deleteRow(-1)
-}
-
 }
 
 function clearSignature(){
