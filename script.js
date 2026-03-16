@@ -185,31 +185,66 @@ document.getElementById("rowType").style.display = type ? "" : "none"
 
 function initSignature(){
 
-const canvas=document.getElementById("signature")
-const ctx=canvas.getContext("2d")
+const canvas = document.getElementById("signature")
+const ctx = canvas.getContext("2d")
 
-let drawing=false
+let drawing = false
 
-canvas.addEventListener("mousedown",()=>drawing=true)
+ctx.lineWidth = 2
+ctx.lineCap = "round"
+ctx.lineJoin = "round"
 
-canvas.addEventListener("mouseup",()=>{
-drawing=false
+function getPos(e){
+
+let rect = canvas.getBoundingClientRect()
+
+if(e.touches){
+return {
+x: e.touches[0].clientX - rect.left,
+y: e.touches[0].clientY - rect.top
+}
+}else{
+return {
+x: e.clientX - rect.left,
+y: e.clientY - rect.top
+}
+}
+
+}
+
+function startDraw(e){
+drawing = true
+let pos = getPos(e)
 ctx.beginPath()
-})
+ctx.moveTo(pos.x,pos.y)
+}
 
-canvas.addEventListener("mousemove",(e)=>{
+function draw(e){
 
 if(!drawing) return
 
-ctx.lineWidth=2
-ctx.lineCap="round"
+e.preventDefault()
 
-ctx.lineTo(e.offsetX,e.offsetY)
+let pos = getPos(e)
+
+ctx.lineTo(pos.x,pos.y)
 ctx.stroke()
-ctx.beginPath()
-ctx.moveTo(e.offsetX,e.offsetY)
 
-})
+}
+
+function endDraw(){
+drawing = false
+ctx.beginPath()
+}
+
+canvas.addEventListener("mousedown", startDraw)
+canvas.addEventListener("mousemove", draw)
+canvas.addEventListener("mouseup", endDraw)
+canvas.addEventListener("mouseleave", endDraw)
+
+canvas.addEventListener("touchstart", startDraw)
+canvas.addEventListener("touchmove", draw)
+canvas.addEventListener("touchend", endDraw)
 
 }
 
