@@ -86,8 +86,6 @@ document.getElementById("csr").value="CSR-"+Date.now()
 
 }
 
-
-
 document.getElementById("date").addEventListener("change",function(){
 
 document.getElementById("dateBottom").value=this.value
@@ -100,27 +98,19 @@ let infoCell = select.parentElement.parentElement.querySelector(".infoCell")
 let value = select.value
 let text = ""
 
-if(value==="cleaning"){
-text="Motor has Cleaned"
-}
-
-if(value==="front"){
-text="Bearing has been replacemented"
-}
-
-if(value==="back"){
-text="Bearing has been replacemented"
-}
-
-if(value==="align"){
-text="Motor has been alignmented"
-}
+if(value==="cleaning") text="Motor has been cleaned"
+if(value==="bearing") text="Bearing has been replaced"
+if(value==="align") text="Motor has been alignmented"
+if(value==="encoder") text="Encoder replaced"
+if(value==="brake") text="Brake replaced"
+if(value==="smi") text="SMI Replaced"
+if(value==="housingFront") text="Housing Bearing has been Recondition"
+if(value==="housingRear") text="Housing Bearing has been Recondition"
+if(value==="seal") text="Seal Replaced"
 
 infoCell.innerText=text
 
 }
-
-
 
 function addAction(){
 
@@ -131,13 +121,22 @@ let row=table.insertRow()
 row.innerHTML=`
 
 <td>
+
 <select onchange="updateActionInfo(this)">
+
 <option value="">Select Action</option>
 <option value="cleaning">Cleaning Motor</option>
-<option value="front">Replacement Front Bearing</option>
-<option value="back">Replacement Back Bearing</option>
+<option value="bearing">Replacement bearing front and rear</option>
 <option value="align">Alignment Encoder</option>
+<option value="encoder">Encoder replacement</option>
+<option value="brake">Brake Replacement</option>
+<option value="smi">SMI Replacement</option>
+<option value="housingFront">Housing Bearing (Front) Recondition</option>
+<option value="housingRear">Housing Bearing (Rear) Recondition</option>
+<option value="seal">Seal Replacement</option>
+
 </select>
+
 </td>
 
 <td class="conditionCell">
@@ -149,16 +148,13 @@ row.innerHTML=`
 `
 
 }
-
-
-
 async function downloadPDF(){
 
 const { jsPDF } = window.jspdf
 
 let report = document.getElementById("report")
-let buttons = document.querySelectorAll(".noPrint")
 
+let buttons = document.querySelectorAll(".noPrint")
 buttons.forEach(b => b.style.display = "none")
 
 const canvas = await html2canvas(report,{scale:2})
@@ -167,21 +163,12 @@ const imgData = canvas.toDataURL("image/png")
 
 const pdf = new jsPDF("p","mm","a4")
 
-const pdfWidth = 210
-const pdfHeight = 297
+const imgWidth = 210
+const pageHeight = 297
 
-const imgWidth = canvas.width
-const imgHeight = canvas.height
+const imgHeight = canvas.height * imgWidth / canvas.width
 
-const ratio = Math.min(pdfWidth/imgWidth , pdfHeight/imgHeight)
-
-const newWidth = imgWidth * ratio
-const newHeight = imgHeight * ratio
-
-const marginX = (pdfWidth - newWidth) / 2
-const marginY = (pdfHeight - newHeight) / 2
-
-pdf.addImage(imgData,"PNG",marginX,marginY,newWidth,newHeight)
+pdf.addImage(imgData,'PNG',0,0,imgWidth,imgHeight)
 
 pdf.save("CNC_Service_Report.pdf")
 
@@ -198,55 +185,47 @@ let customer = document.querySelector("input[name='customer']")?.value || ""
 let address = document.querySelector("input[name='address']")?.value || ""
 
 let templateParams = {
-
 csr: csr,
 date: date,
 customer: customer,
 address: address
-
 }
 
 emailjs.send("YOUR_SERVICE_ID","YOUR_TEMPLATE_ID",templateParams)
 
 .then(function(response){
-
 alert("Report berhasil dikirim ke Gmail")
-
 }, function(error){
-
 alert("Gagal mengirim email")
-
 })
 
 }
+}
 
-function sendEmail(){
+function clearSignature(){
 
-let csr = document.getElementById("csr").value
-let date = document.getElementById("date").value
+const canvas = document.getElementById("signature")
+const ctx = canvas.getContext("2d")
 
-let customer = document.querySelector("input[name='customer']")?.value || ""
-let address = document.querySelector("input[name='address']")?.value || ""
-
-let templateParams = {
-
-csr: csr,
-date: date,
-customer: customer,
-address: address
+ctx.clearRect(0,0,canvas.width,canvas.height)
 
 }
 
-emailjs.send("YOUR_SERVICE_ID","YOUR_TEMPLATE_ID",templateParams)
+function applyRowOption(){
 
-.then(function(response){
+let brake = document.getElementById("optBrake").checked
+let smi = document.getElementById("optSMI").checked
+let type = document.getElementById("optType").checked
 
-alert("Report berhasil dikirim ke Gmail")
+document.getElementById("rowBrake").style.display = brake ? "" : "none"
+document.getElementById("rowSMI").style.display = smi ? "" : "none"
+document.getElementById("rowType").style.display = type ? "" : "none"
 
-}, function(error){
+}
 
-alert("Gagal mengirim email")
+function printReport(){
 
-})
+applyRowOption()
+window.print()
 
 }
