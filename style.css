@@ -236,3 +236,19 @@ width:55%;
 #actionTable td:nth-child(3){
 width:35%;
 }
+
+@media print {
+
+thead{
+display: table-header-group;
+}
+
+tfoot{
+display: table-footer-group;
+}
+
+tr{
+page-break-inside: avoid;
+}
+
+}
