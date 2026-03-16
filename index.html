@@ -222,6 +222,7 @@ Encoder / Resolver
 
 
 <tr id="rowSMI">
+
 <td>
 <select>
 <option value="">Select SMI</option>
@@ -237,6 +238,12 @@ Encoder / Resolver
 <option>SMI can't detect</option>
 </select>
 </td>
+
+<td class="conditionCell">
+<i class="fa-solid fa-circle-xmark conditionIcon bad" onclick="toggleCondition(this)"></i>
+</td>
+
+</tr>
 
 
 <tr id="rowType">
@@ -272,6 +279,8 @@ Encoder / Resolver
 </tr>
 
 
+<tr>
+
 <td>Sensor Temperatur</td>
 
 <td>
@@ -286,7 +295,7 @@ Encoder / Resolver
 <i class="fa-solid fa-circle-xmark conditionIcon bad" onclick="toggleCondition(this)"></i>
 </td>
 
-
+</tr>
 
 <tr>
 <td colspan="3"><b>Motor Running Test</b></td>
