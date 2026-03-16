@@ -132,6 +132,10 @@ if(value==="housingRear"){
 text="Housing Bearing has been Recondition"
 }
 
+if(value==="seal"){
+text="Seal Replaced"
+}
+
 infoCell.innerText=text
 
 }
@@ -158,6 +162,7 @@ row.innerHTML=`
 <option value="smi">SMI Replacement</option>
 <option value="housingFront">Housing Bearing (Front) Recondition</option>
 <option value="housingRear">Housing Bearing (Rear) Recondition</option>
+
 
 </select>
 
