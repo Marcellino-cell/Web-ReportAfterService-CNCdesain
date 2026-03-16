@@ -148,6 +148,31 @@ let row=table.insertRow()
 
 row.innerHTML=`
 
+<tr>
+
+<td>
+<select onchange="updateActionInfo(this)">
+<option value="">Select Action</option>
+<option value="cleaning">Cleaning Motor</option>
+<option value="bearing">Replacement bearing front and rear</option>
+<option value="align">Alignment Encoder</option>
+<option value="encoder">Encoder replacement</option>
+<option value="brake">Brake Replacement</option>
+<option value="smi">SMI Replacement</option>
+<option value="housingFront">Housing Bearing (Front) Recondition</option>
+<option value="housingRear">Housing Bearing (Rear) Recondition</option>
+<option value="seal">Seal Replacement</option>
+</select>
+</td>
+
+<td class="conditionCell">
+<i class="fa-solid fa-circle-xmark conditionIcon bad" onclick="toggleCondition(this)"></i>
+</td>
+
+<td class="infoCell"></td>
+
+</tr>
+
 async function downloadPDF(){
 
 applyRowOption()
