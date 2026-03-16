@@ -227,6 +227,16 @@ customer: customer,
 address: address
 }
 
+function sendEmail(){
+
+let csr = document.getElementById("csr").value
+let date = document.getElementById("date").value
+
+let templateParams = {
+csr: csr,
+date: date
+}
+
 emailjs.send("YOUR_SERVICE_ID","YOUR_TEMPLATE_ID",templateParams)
 
 .then(function(response){
@@ -274,5 +284,16 @@ let type = document.getElementById("optType").checked
 document.getElementById("rowBrake").style.display = brake ? "" : "none"
 document.getElementById("rowSMI").style.display = smi ? "" : "none"
 document.getElementById("rowType").style.display = type ? "" : "none"
+
+}
+
+function removeLastAction(){
+
+let table = document.getElementById("actionTable")
+let rowCount = table.rows.length
+
+if(rowCount > 2){
+table.deleteRow(rowCount - 1)
+}
 
 }
