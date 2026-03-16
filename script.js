@@ -84,6 +84,8 @@ document.getElementById("dateBottom").value=today
 
 document.getElementById("csr").value="CSR-"+Date.now()
 
+applyRowOption()
+
 }
 
 document.getElementById("date").addEventListener("change",function(){
