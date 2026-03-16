@@ -251,8 +251,9 @@ border:none;
 }
 
 }
+
 .section{
-page-break-before: always;
+page-break-before: avoid;
 }
 
 tr{
@@ -268,6 +269,10 @@ margin:0;
 
 max-width:210mm;
 overflow:hidden;
+}
+
+table{
+page-break-inside: avoid;
 }
 
 .autoFit tr{
