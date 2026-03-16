@@ -153,8 +153,8 @@ async function downloadPDF(){
 const { jsPDF } = window.jspdf
 
 let report = document.getElementById("report")
-let buttons = document.querySelectorAll(".noPrint")
 
+let buttons = document.querySelectorAll(".noPrint")
 buttons.forEach(b => b.style.display = "none")
 
 const canvas = await html2canvas(report,{scale:2})
@@ -163,21 +163,12 @@ const imgData = canvas.toDataURL("image/png")
 
 const pdf = new jsPDF("p","mm","a4")
 
-const pdfWidth = 210
-const pdfHeight = 297
+const imgWidth = 210
+const pageHeight = 297
 
-const imgWidth = canvas.width
-const imgHeight = canvas.height
+const imgHeight = canvas.height * imgWidth / canvas.width
 
-const ratio = Math.min(pdfWidth/imgWidth , pdfHeight/imgHeight)
-
-const newWidth = imgWidth * ratio
-const newHeight = imgHeight * ratio
-
-const marginX = (pdfWidth - newWidth) / 2
-const marginY = (pdfHeight - newHeight) / 2
-
-pdf.addImage(imgData,"PNG",marginX,marginY,newWidth,newHeight)
+pdf.addImage(imgData,'PNG',0,0,imgWidth,imgHeight)
 
 pdf.save("CNC_Service_Report.pdf")
 
