@@ -154,6 +154,8 @@ row.innerHTML=`
 
 async function downloadPDF(){
 
+applyRowOption()
+
 const { jsPDF } = window.jspdf
 
 let report = document.getElementById("report")
@@ -279,5 +281,12 @@ let type = document.getElementById("optType").checked
 document.getElementById("rowBrake").style.display = brake ? "" : "none"
 document.getElementById("rowSMI").style.display = smi ? "" : "none"
 document.getElementById("rowType").style.display = type ? "" : "none"
+
+}
+
+function printReport(){
+
+applyRowOption()
+window.print()
 
 }
