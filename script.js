@@ -84,13 +84,14 @@ document.getElementById("dateBottom").value=today
 
 document.getElementById("csr").value="CSR-"+Date.now()
 
+// TAMBAHKAN INI
+document.getElementById("optBrake").addEventListener("change",applyRowOption)
+document.getElementById("optSMI").addEventListener("change",applyRowOption)
+document.getElementById("optType").addEventListener("change",applyRowOption)
+
+applyRowOption()
+
 }
-
-document.getElementById("date").addEventListener("change",function(){
-
-document.getElementById("dateBottom").value=this.value
-
-})
 
 function updateActionInfo(select){
 
@@ -149,6 +150,8 @@ row.innerHTML=`
 
 }
 async function downloadPDF(){
+
+applyRowOption()
 
 const { jsPDF } = window.jspdf
 
@@ -227,5 +230,17 @@ function printReport(){
 
 applyRowOption()
 window.print()
+
+}
+
+function applyRowOption(){
+
+let brake = document.getElementById("optBrake").checked
+let smi = document.getElementById("optSMI").checked
+let type = document.getElementById("optType").checked
+
+document.getElementById("rowBrake").style.display = brake ? "" : "none"
+document.getElementById("rowSMI").style.display = smi ? "" : "none"
+document.getElementById("rowType").style.display = type ? "" : "none"
 
 }
