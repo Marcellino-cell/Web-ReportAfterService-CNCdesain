@@ -1,20 +1,14 @@
 function toggleCondition(icon){
 
 if(icon.classList.contains("bad")){
-
 icon.classList.remove("fa-circle-xmark","bad")
 icon.classList.add("fa-circle-check","good")
-
 }else{
-
 icon.classList.remove("fa-circle-check","good")
 icon.classList.add("fa-circle-xmark","bad")
-
 }
 
 }
-
-
 
 function updateEncoderMeasurement(){
 
@@ -26,38 +20,24 @@ measurement.innerHTML=""
 if(type==="encoder"){
 
 measurement.innerHTML=`
-
 <option value="">Select</option>
 <option>Encoder can detect</option>
 <option>Encoder can't detect</option>
-
 `
 
 }
 
-const canvas=document.getElementById("signature")
-const ctx=canvas.getContext("2d")
+if(type==="resolver"){
 
-let drawing=false
+measurement.innerHTML=`
+<option value="">Select</option>
+<option>Resolver can detect</option>
+<option>Resolver can't detect</option>
+`
 
-canvas.addEventListener("mousedown",()=>drawing=true)
-canvas.addEventListener("mouseup",()=>drawing=false)
+}
 
-canvas.addEventListener("mousemove",(e)=>{
-
-if(!drawing) return
-
-ctx.lineWidth=2
-ctx.lineCap="round"
-
-ctx.lineTo(e.offsetX,e.offsetY)
-ctx.stroke()
-
-ctx.beginPath()
-ctx.moveTo(e.offsetX,e.offsetY)
-
-})
-
+}
 
 window.onload=function(){
 
@@ -68,12 +48,13 @@ document.getElementById("dateBottom").value=today
 
 document.getElementById("csr").value="CSR-"+Date.now()
 
-// TAMBAHKAN INI
 document.getElementById("optBrake").addEventListener("change",applyRowOption)
 document.getElementById("optSMI").addEventListener("change",applyRowOption)
 document.getElementById("optType").addEventListener("change",applyRowOption)
 
 applyRowOption()
+
+initSignature()
 
 }
 
@@ -139,7 +120,6 @@ function removeLastAction(){
 let table = document.getElementById("actionTable")
 let rowCount = table.rows.length
 
-// minimal sisakan 1 baris action
 if(rowCount > 2){
 table.deleteRow(rowCount - 1)
 }
@@ -172,6 +152,7 @@ let heightLeft = imgHeight
 let position = 0
 
 pdf.addImage(imgData,'PNG',0,position,imgWidth,imgHeight)
+
 heightLeft -= pageHeight
 
 while(heightLeft > 0){
@@ -190,43 +171,44 @@ buttons.forEach(b => b.style.display = "inline-block")
 
 }
 
-pdf.save("CNC_Service_Report.pdf")
+function applyRowOption(){
 
-buttons.forEach(b => b.style.display = "inline-block")
+let brake = document.getElementById("optBrake").checked
+let smi = document.getElementById("optSMI").checked
+let type = document.getElementById("optType").checked
+
+document.getElementById("rowBrake").style.display = brake ? "" : "none"
+document.getElementById("rowSMI").style.display = smi ? "" : "none"
+document.getElementById("rowType").style.display = type ? "" : "none"
 
 }
 
-function sendEmail(){
+function initSignature(){
 
-let csr = document.getElementById("csr").value
-let date = document.getElementById("date").value
+const canvas=document.getElementById("signature")
+const ctx=canvas.getContext("2d")
 
-let customer = document.querySelector("input[name='customer']")?.value || ""
-let address = document.querySelector("input[name='address']")?.value || ""
+let drawing=false
 
-let templateParams = {
-csr: csr,
-date: date,
-customer: customer,
-address: address
-}
+canvas.addEventListener("mousedown",()=>drawing=true)
 
-function sendEmail(){
+canvas.addEventListener("mouseup",()=>{
+drawing=false
+ctx.beginPath()
+})
 
-let csr = document.getElementById("csr").value
-let date = document.getElementById("date").value
+canvas.addEventListener("mousemove",(e)=>{
 
-let templateParams = {
-csr: csr,
-date: date
-}
+if(!drawing) return
 
-emailjs.send("YOUR_SERVICE_ID","YOUR_TEMPLATE_ID",templateParams)
+ctx.lineWidth=2
+ctx.lineCap="round"
 
-.then(function(response){
-alert("Report berhasil dikirim ke Gmail")
-}, function(error){
-alert("Gagal mengirim email")
+ctx.lineTo(e.offsetX,e.offsetY)
+ctx.stroke()
+ctx.beginPath()
+ctx.moveTo(e.offsetX,e.offsetY)
+
 })
 
 }
@@ -237,47 +219,5 @@ const canvas = document.getElementById("signature")
 const ctx = canvas.getContext("2d")
 
 ctx.clearRect(0,0,canvas.width,canvas.height)
-
-}
-
-function applyRowOption(){
-
-let brake = document.getElementById("optBrake").checked
-let smi = document.getElementById("optSMI").checked
-let type = document.getElementById("optType").checked
-
-document.getElementById("rowBrake").style.display = brake ? "" : "none"
-document.getElementById("rowSMI").style.display = smi ? "" : "none"
-document.getElementById("rowType").style.display = type ? "" : "none"
-
-}
-
-function printReport(){
-
-applyRowOption()
-window.print()
-
-}
-
-function applyRowOption(){
-
-let brake = document.getElementById("optBrake").checked
-let smi = document.getElementById("optSMI").checked
-let type = document.getElementById("optType").checked
-
-document.getElementById("rowBrake").style.display = brake ? "" : "none"
-document.getElementById("rowSMI").style.display = smi ? "" : "none"
-document.getElementById("rowType").style.display = type ? "" : "none"
-
-}
-
-function removeLastAction(){
-
-let table = document.getElementById("actionTable")
-let rowCount = table.rows.length
-
-if(rowCount > 2){
-table.deleteRow(rowCount - 1)
-}
 
 }
