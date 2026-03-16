@@ -194,6 +194,12 @@ buttons.forEach(b => b.style.display = "inline-block")
 
 }
 
+pdf.save("CNC_Service_Report.pdf")
+
+buttons.forEach(b => b.style.display = "inline-block")
+
+}
+
 function sendEmail(){
 
 let csr = document.getElementById("csr").value
