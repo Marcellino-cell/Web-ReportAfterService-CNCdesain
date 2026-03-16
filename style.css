@@ -158,6 +158,19 @@ td{
 font-size:16px;
 }
 
+.optionBox{
+background:#f7f7f7;
+padding:8px;
+margin-bottom:10px;
+font-size:13px;
+border:1px solid #ccc;
+}
+
+.optionBox label{
+margin-right:15px;
+cursor:pointer;
+}
+
 select{
 font-size:16px;
 }
