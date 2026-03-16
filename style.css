@@ -1,13 +1,13 @@
 body{font-family:Arial;background:#f2f2f2;padding:20px;}
 
 .paper{
-width:100%;
-max-width:900px;
-min-height:auto;
-background:white;
+width:210mm;
+height:297mm;
 margin:auto;
-padding:20px;
-border:1px solid #333;
+padding:10px;
+background:white;
+border:1px solid #444;
+overflow:hidden;
 }
 
 .header{display:flex;justify-content:space-between;margin-bottom:10px;}
@@ -38,7 +38,11 @@ height:26px;
 box-sizing:border-box;
 }
 
-td,th{border:1px solid #444;padding:4px;word-wrap:break-word;}
+td,th{
+border:1px solid #444;
+padding:2px;
+font-size:12px;
+}
 
 .tableHeader{background:#0f9d8a;color:white;}
 
@@ -261,32 +265,7 @@ body{
 margin:0;
 }
 
-@media (max-width:768px){
 
-body{
-padding:5px;
-}
-
-.paper{
-width:100%;
-padding:10px;
-border:none;
-}
-
-table{
-font-size:12px;
-}
-
-input,select{
-font-size:12px;
-}
-
-.logo{
-width:120px;
-}
-
-}
-.paper{
 max-width:210mm;
 overflow:hidden;
 }
