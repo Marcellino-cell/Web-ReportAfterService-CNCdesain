@@ -57,7 +57,10 @@ const ctx=canvas.getContext("2d")
 let drawing=false
 
 canvas.addEventListener("mousedown",()=>drawing=true)
-canvas.addEventListener("mouseup",()=>drawing=false)
+canvas.addEventListener("mouseup",()=>{
+drawing=false
+ctx.beginPath()
+})
 
 canvas.addEventListener("mousemove",(e)=>{
 
