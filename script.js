@@ -137,22 +137,25 @@ infoCell.innerText = text
 }
 
 
-function addAction(){
-
-let table=document.getElementById("actionTable")
-
-let row=table.insertRow()
-
-row.innerHTML=`
+row.innerHTML = `
 
 <td>
+
 <select onchange="updateActionInfo(this)">
+
 <option value="">Select Action</option>
+
 <option value="cleaning">Cleaning Motor</option>
-<option value="front">Replacement Front Bearing</option>
-<option value="back">Replacement Back Bearing</option>
+<option value="bearing">Replacement bearing front and rear</option>
 <option value="align">Alignment Encoder</option>
+<option value="encoder">Encoder replacement</option>
+<option value="brake">Brake Replacement</option>
+<option value="smi">SMI Replacement</option>
+<option value="housingFront">Housing Bearing (Front) Recondition</option>
+<option value="housingRear">Housing Bearing (Rear) Recondition</option>
+
 </select>
+
 </td>
 
 <td class="conditionCell">
@@ -162,10 +165,6 @@ row.innerHTML=`
 <td class="infoCell"></td>
 
 `
-
-}
-
-
 
 async function downloadPDF(){
 
