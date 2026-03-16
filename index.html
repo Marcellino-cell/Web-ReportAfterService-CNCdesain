@@ -76,15 +76,35 @@ Jl. Frontage Ahmad Yani No.88 Surabaya
 <table>
 
 <tr>
-<td>Motor Type</td>
+<td>PartNumber</td>
 <td><input type="text"></td>
 
-<td>SN</td>
+<td>SerialNumber</td>
 <td><input type="text"></td>
 </tr>
 
 </table>
 
+<div class="noPrint optionBox">
+
+<span class="optionTitle">Include in PDF / Print:</span>
+
+<label class="optionItem">
+<input type="checkbox" id="optBrake" checked>
+Motor Brake
+</label>
+
+<label class="optionItem">
+<input type="checkbox" id="optSMI" checked>
+SMI
+</label>
+
+<label class="optionItem">
+<input type="checkbox" id="optType" checked>
+Encoder / Resolver
+</label>
+
+</div>
 
 <h3 class="section">CHECK MOTOR CONDITION</h3>
 
@@ -183,7 +203,7 @@ Jl. Frontage Ahmad Yani No.88 Surabaya
 </tr>
 
 
-<tr>
+<tr id="rowBrake">
 <td>Motor Brake</td>
 
 <td>
@@ -201,11 +221,10 @@ Jl. Frontage Ahmad Yani No.88 Surabaya
 </tr>
 
 
-<tr>
-
+<tr id="rowSMI">
 <td>
-SMI
 <select>
+<option value="">Select SMI</option>
 <option>SMI10</option>
 <option>SMI20</option>
 </select>
@@ -219,14 +238,8 @@ SMI
 </select>
 </td>
 
-<td class="conditionCell">
-<i class="fa-solid fa-circle-xmark conditionIcon bad" onclick="toggleCondition(this)"></i>
-</td>
 
-</tr>
-
-
-<tr>
+<tr id="rowType">
 
 <td>
 
@@ -259,19 +272,19 @@ SMI
 </tr>
 
 
-<tr>
-
 <td>Sensor Temperatur</td>
 
-<td><input type="text"></td>
-
-<td class="conditionCell">
-
-<i class="fa-solid fa-circle-xmark conditionIcon bad" onclick="toggleCondition(this)"></i>
-
+<td>
+<select>
+<option value="">Select</option>
+<option>Sensor can detect Actual temperature</option>
+<option>Sensor can't detect temperature</option>
+</select>
 </td>
 
-</tr>
+<td class="conditionCell">
+<i class="fa-solid fa-circle-xmark conditionIcon bad" onclick="toggleCondition(this)"></i>
+</td>
 
 
 
@@ -326,19 +339,30 @@ SMI
 
 </tr>
 
-
 <tr>
+<td>Actual Current Fix</td>
 
-<td>Torque Current Actual</td>
-
-<td><input type="text"></td>
-
-<td class="conditionCell">
-
-<i class="fa-solid fa-circle-xmark conditionIcon bad" onclick="toggleCondition(this)"></i>
-
+<td class="ohmInput">
+<input type="text">
+<span>Ω</span>
 </td>
 
+<td class="conditionCell">
+<i class="fa-solid fa-circle-xmark conditionIcon bad" onclick="toggleCondition(this)"></i>
+</td>
+</tr>
+
+<tr>
+<td>Actual Torque Fix</td>
+
+<td class="ohmInput">
+<input type="text">
+<span>Nm</span>
+</td>
+
+<td class="conditionCell">
+<i class="fa-solid fa-circle-xmark conditionIcon bad" onclick="toggleCondition(this)"></i>
+</td>
 </tr>
 
 </table>
@@ -352,16 +376,20 @@ SMI
 <th>Confirmation</th>
 <th>Information</th>
 </tr>
-
 <tr>
 
 <td>
 <select onchange="updateActionInfo(this)">
 <option value="">Select Action</option>
 <option value="cleaning">Cleaning Motor</option>
-<option value="front">Replacement Front Bearing</option>
-<option value="back">Replacement Back Bearing</option>
+<option value="bearing">Replacement bearing front and rear</option>
 <option value="align">Alignment Encoder</option>
+<option value="encoder">Encoder replacement</option>
+<option value="brake">Brake Replacement</option>
+<option value="smi">SMI Replacement</option>
+<option value="housingFront">Housing Bearing (Front) Recondition</option>
+<option value="housingRear">Housing Bearing (Rear) Recondition</option>
+<option value="seal">Seal Replacement</option>
 </select>
 </td>
 
@@ -376,12 +404,12 @@ SMI
 </table>
 
 <button class="noPrint" onclick="addAction()">+ Add Action</button>
+<button class="noPrint" onclick="removeLastAction()">Remove</button>
 
-<br><br>
+<br>
 
 <button class="noPrint" onclick="downloadPDF()">Download PDF</button>
 <button class="noPrint" onclick="window.print()">Print</button>
-<button class="noPrint" onclick="sendEmail()">Send to Gmail</button>
 
 <p class="statusLegend">
 
@@ -434,7 +462,8 @@ SMI
 <td>Signature</td>
 
 <td>
-<canvas id="signature" width="250" height="70"></canvas>
+<canvas id="signature" width="250" height="70"></canvas><br>
+<button class="noPrint" onclick="clearSignature()">Remove</button>
 </td>
 
 </tr>
