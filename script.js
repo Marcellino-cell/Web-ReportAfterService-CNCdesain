@@ -86,8 +86,6 @@ document.getElementById("csr").value="CSR-"+Date.now()
 
 }
 
-
-
 document.getElementById("date").addEventListener("change",function(){
 
 document.getElementById("dateBottom").value=this.value
@@ -100,41 +98,15 @@ let infoCell = select.parentElement.parentElement.querySelector(".infoCell")
 let value = select.value
 let text = ""
 
-if(value==="cleaning"){
-text="Motor has been cleaned"
-}
-
-if(value==="bearing"){
-text="Bearing has been replaced"
-}
-
-if(value==="align"){
-text="Motor has been alignmented"
-}
-
-if(value==="encoder"){
-text="Encoder replaced"
-}
-
-if(value==="brake"){
-text="Brake replaced"
-}
-
-if(value==="smi"){
-text="SMI replaced"
-}
-
-if(value==="housingFront"){
-text="Housing Bearing has been Recondition"
-}
-
-if(value==="housingRear"){
-text="Housing Bearing has been Recondition"
-}
-
-if(value==="seal"){
-text="Seal Replaced"
-}
+if(value==="cleaning") text="Motor has been cleaned"
+if(value==="bearing") text="Bearing has been replaced"
+if(value==="align") text="Motor has been alignmented"
+if(value==="encoder") text="Encoder replaced"
+if(value==="brake") text="Brake replaced"
+if(value==="smi") text="SMI Replaced"
+if(value==="housingFront") text="Housing Bearing has been Recondition"
+if(value==="housingRear") text="Housing Bearing has been Recondition"
+if(value==="seal") text="Seal Replaced"
 
 infoCell.innerText=text
 
@@ -146,10 +118,36 @@ let table=document.getElementById("actionTable")
 
 let row=table.insertRow()
 
-row.innerHTML=
-  `
-}
+row.innerHTML=`
 
+<td>
+
+<select onchange="updateActionInfo(this)">
+
+<option value="">Select Action</option>
+<option value="cleaning">Cleaning Motor</option>
+<option value="bearing">Replacement bearing front and rear</option>
+<option value="align">Alignment Encoder</option>
+<option value="encoder">Encoder replacement</option>
+<option value="brake">Brake Replacement</option>
+<option value="smi">SMI Replacement</option>
+<option value="housingFront">Housing Bearing (Front) Recondition</option>
+<option value="housingRear">Housing Bearing (Rear) Recondition</option>
+<option value="seal">Seal Replacement</option>
+
+</select>
+
+</td>
+
+<td class="conditionCell">
+<i class="fa-solid fa-circle-xmark conditionIcon bad" onclick="toggleCondition(this)"></i>
+</td>
+
+<td class="infoCell"></td>
+
+`
+
+}
 async function downloadPDF(){
 
 const { jsPDF } = window.jspdf
