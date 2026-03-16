@@ -269,3 +269,15 @@ const ctx = canvas.getContext("2d")
 ctx.clearRect(0,0,canvas.width,canvas.height)
 
 }
+
+function applyRowOption(){
+
+let brake = document.getElementById("optBrake").checked
+let smi = document.getElementById("optSMI").checked
+let type = document.getElementById("optType").checked
+
+document.getElementById("rowBrake").style.display = brake ? "" : "none"
+document.getElementById("rowSMI").style.display = smi ? "" : "none"
+document.getElementById("rowType").style.display = type ? "" : "none"
+
+}
