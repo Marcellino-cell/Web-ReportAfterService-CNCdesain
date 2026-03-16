@@ -228,6 +228,11 @@ text-align:center;
 #actionTable select{
 font-size:13px;
 }
+
+#actionTable td:first-child,
+#actionTable th:first-child{
+width:55%;
+}
 #actionTable th:nth-child(3),
 #actionTable td:nth-child(3){
 width:35%;
