@@ -291,3 +291,6 @@ function printReport(){
 applyIncludeOption()
 window.print()
 }
+
+window.printReport = printReport;
+window.downloadPDF = downloadPDF;
