@@ -129,7 +129,6 @@ table.deleteRow(rowCount - 1)
 async function downloadPDF(){
 
 applyIncludeOption()
-  
 applyRowOption()
 
 const { jsPDF } = window.jspdf
@@ -140,7 +139,6 @@ let buttons = document.querySelectorAll(".noPrint")
 buttons.forEach(b => b.style.display = "none")
 
 const canvas = await html2canvas(report,{scale:2})
-
 const imgData = canvas.toDataURL("image/png")
 
 const pdf = new jsPDF("p","mm","a4")
@@ -165,14 +163,13 @@ pdf.addImage(imgData,'PNG',0,position,imgWidth,imgHeight)
 
 heightLeft -= pageHeight
 
-<div class="noPrint">
-Include in PDF / Print:
-</div>
-
-hide.forEach(el => el.style.display = "block")
-  
 }
 
+pdf.save("CNC_Service_Report.pdf")
+
+buttons.forEach(b => b.style.display = "inline-block")
+
+}
 pdf.save("CNC_Service_Report.pdf")
 
 buttons.forEach(b => b.style.display = "inline-block")
@@ -265,13 +262,18 @@ ctx.clearRect(0,0,canvas.width,canvas.height)
 
 }
 
+window.addEventListener("load", function(){
+
 const note = document.getElementById("additionalNote");
 
+if(note){
 note.addEventListener("input", function(){
 this.style.height = "auto";
 this.style.height = this.scrollHeight + "px";
 });
+}
 
+});
 function applyIncludeOption(){
 
 let check = document.getElementById("includeNote").checked
