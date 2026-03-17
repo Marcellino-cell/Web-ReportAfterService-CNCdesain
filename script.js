@@ -256,3 +256,10 @@ const ctx = canvas.getContext("2d")
 ctx.clearRect(0,0,canvas.width,canvas.height)
 
 }
+
+const note = document.getElementById("additionalNote");
+
+note.addEventListener("input", function(){
+this.style.height = "auto";
+this.style.height = this.scrollHeight + "px";
+});
