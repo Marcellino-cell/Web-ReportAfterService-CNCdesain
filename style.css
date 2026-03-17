@@ -298,11 +298,11 @@ font-weight: bold;
 
 .additional-note-table textarea {
 width: 100%;
-min-height: 60px;
+min-height: 120px;   /* 🔥 ini yang bikin lebih panjang */
 border: none;
-resize: vertical; /* bisa tarik ke bawah */
+resize: vertical;
 outline: none;
 font-size: 12px;
-font-family: Arial;
 box-sizing: border-box;
 }
+
