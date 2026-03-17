@@ -256,3 +256,15 @@ const ctx = canvas.getContext("2d")
 ctx.clearRect(0,0,canvas.width,canvas.height)
 
 }
+
+function toggleReportType(){
+
+let title = document.getElementById("reportTitle")
+
+if(title.innerText === "REPORT AFTER SERVICE"){
+    title.innerText = "REPORT BEFORE SERVICE"
+}else{
+    title.innerText = "REPORT AFTER SERVICE"
+}
+
+}
