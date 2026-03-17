@@ -277,3 +277,14 @@ margin: 6px 0;   /* jarak normal */
 .spasi-kecil {
 margin: 2px 0;   /* khusus Jawa Timur & Indonesia */
 }
+
+.note-section {
+margin-top: 15px;
+margin-bottom: 8px;
+font-size: 13px;
+color: #333;
+}
+
+.note-section b {
+margin-right: 5px;
+}
