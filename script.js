@@ -165,6 +165,12 @@ pdf.addImage(imgData,'PNG',0,position,imgWidth,imgHeight)
 
 heightLeft -= pageHeight
 
+<div class="noPrint">
+Include in PDF / Print:
+</div>
+
+hide.forEach(el => el.style.display = "block")
+  
 }
 
 pdf.save("CNC_Service_Report.pdf")
