@@ -269,3 +269,13 @@ width:190px;
 height:70px;
 touch-action:none;
 }
+
+#reportTitle{
+cursor:pointer;
+transition:0.2s;
+}
+
+#reportTitle:hover{
+color:#0f9d8a;
+transform:scale(1.02);
+}
