@@ -128,6 +128,8 @@ table.deleteRow(rowCount - 1)
 
 async function downloadPDF(){
 
+applyIncludeOption()
+  
 applyRowOption()
 
 const { jsPDF } = window.jspdf
@@ -263,3 +265,21 @@ note.addEventListener("input", function(){
 this.style.height = "auto";
 this.style.height = this.scrollHeight + "px";
 });
+
+function applyIncludeOption(){
+
+let check = document.getElementById("includeNote").checked
+let noteSection = document.getElementById("additionalNoteSection")
+
+if(check){
+noteSection.style.display = "block"
+}else{
+noteSection.style.display = "none"
+}
+
+}
+
+function printReport(){
+applyIncludeOption()
+window.print()
+}
