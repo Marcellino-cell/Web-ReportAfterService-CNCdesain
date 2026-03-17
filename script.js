@@ -257,17 +257,4 @@ ctx.clearRect(0,0,canvas.width,canvas.height)
 
 }
 
-function toggleReportType(){
-
-let title = document.getElementById("reportTitle")
-let actionSection = document.getElementById("actionTable")
-
-if(title.innerText === "REPORT AFTER SERVICE"){
-    title.innerText = "REPORT BEFORE SERVICE"
-    actionSection.style.display = "none"
-}else{
-    title.innerText = "REPORT AFTER SERVICE"
-    actionSection.style.display = ""
-}
-
-}
+<h3 class="section" id="actionTitle">ACTION REPORT</h3>
