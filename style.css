@@ -270,11 +270,10 @@ height:70px;
 touch-action:none;
 }
 
-.company-address {
-line-height: 1.3;
-margin-bottom: 5px;
+.company-address p {
+margin: 6px 0;   /* jarak normal */
 }
 
-.company-address p {
-margin: 2px 0;
+.spasi-kecil {
+margin: 2px 0;   /* khusus Jawa Timur & Indonesia */
 }
