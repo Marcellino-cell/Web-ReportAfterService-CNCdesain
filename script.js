@@ -165,14 +165,59 @@ heightLeft -= pageHeight
 
 }
 
+async function downloadPDF(){
+
+applyIncludeOption()
+applyRowOption()
+
+const { jsPDF } = window.jspdf
+
+let report = document.getElementById("report")
+
+let buttons = document.querySelectorAll(".noPrint")
+
+// sembunyikan tombol sementara
+buttons.forEach(b => b.style.display = "none")
+
+try{
+
+const canvas = await html2canvas(report,{scale:2})
+const imgData = canvas.toDataURL("image/png")
+
+const pdf = new jsPDF("p","mm","a4")
+
+const imgWidth = 210
+const pageHeight = 297
+
+const imgHeight = canvas.height * imgWidth / canvas.width
+let heightLeft = imgHeight
+
+let position = 0
+
+pdf.addImage(imgData,'PNG',0,position,imgWidth,imgHeight)
+
+heightLeft -= pageHeight
+
+while(heightLeft > 0){
+
+position = heightLeft - imgHeight
+pdf.addPage()
+pdf.addImage(imgData,'PNG',0,position,imgWidth,imgHeight)
+
+heightLeft -= pageHeight
+
+}
+
 pdf.save("CNC_Service_Report.pdf")
 
+} finally {
+
+// balikin tombol (ANTI BUG)
 buttons.forEach(b => b.style.display = "inline-block")
 
 }
-pdf.save("CNC_Service_Report.pdf")
 
-buttons.forEach(b => b.style.display = "inline-block")
+}
 
 }
 
