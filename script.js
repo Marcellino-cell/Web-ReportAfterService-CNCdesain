@@ -1,3 +1,7 @@
+window.onerror = function(msg){
+console.log("ERROR:", msg)
+}
+
 function toggleCondition(icon){
 
 if(icon.classList.contains("bad")){
@@ -43,15 +47,24 @@ window.onload=function(){
 
 let today=new Date().toISOString().split('T')[0]
 
-document.getElementById("date").value=today
-document.getElementById("dateBottom").value=today
+let date = document.getElementById("date")
+let dateBottom = document.getElementById("dateBottom")
+let csr = document.getElementById("csr")
 
-document.getElementById("csr").value="CSR-"+Date.now()
+if(date) date.value=today
+if(dateBottom) dateBottom.value=today
+if(csr) csr.value="CSR-"+Date.now()
 
-document.getElementById("optBrake").addEventListener("change",applyRowOption)
-document.getElementById("optSMI").addEventListener("change",applyRowOption)
-document.getElementById("optType").addEventListener("change",applyRowOption)
-document.getElementById("includeNote").addEventListener("change", applyRowOption)
+// checkbox aman (tidak bikin error kalau tidak ada)
+let optBrake = document.getElementById("optBrake")
+let optSMI = document.getElementById("optSMI")
+let optType = document.getElementById("optType")
+let includeNote = document.getElementById("includeNote")
+
+if(optBrake) optBrake.addEventListener("change",applyRowOption)
+if(optSMI) optSMI.addEventListener("change",applyRowOption)
+if(optType) optType.addEventListener("change",applyRowOption)
+if(includeNote) includeNote.addEventListener("change",applyRowOption)
 
 applyRowOption()
 initSignature()
