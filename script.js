@@ -1,7 +1,3 @@
-window.onerror = function(msg){
-console.log("ERROR:", msg)
-}
-
 function toggleCondition(icon){
 
 if(icon.classList.contains("bad")){
