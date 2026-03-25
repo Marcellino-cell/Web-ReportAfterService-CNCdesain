@@ -200,9 +200,8 @@ document.getElementById("rowBrake").style.display = brake ? "" : "none"
 document.getElementById("rowSMI").style.display = smi ? "" : "none"
 document.getElementById("rowType").style.display = type ? "" : "none"
 
+// 🔥 tambahan
 document.getElementById("additionalNoteSection").style.display = note ? "block" : "none"
-
-}
 
 }
 
