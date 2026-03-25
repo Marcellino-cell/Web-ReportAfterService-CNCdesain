@@ -204,6 +204,8 @@ document.getElementById("additionalNoteSection").style.display = note ? "block" 
 
 }
 
+}
+
 function initSignature(){
 
 const canvas = document.getElementById("signature")
