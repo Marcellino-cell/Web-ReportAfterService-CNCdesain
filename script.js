@@ -187,6 +187,8 @@ buttons.forEach(b => b.style.display = "inline-block")
 
 }
 
+}
+
 function applyRowOption(){
 
 let brake = document.getElementById("optBrake").checked
