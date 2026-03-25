@@ -183,10 +183,13 @@ function applyRowOption(){
 let brake = document.getElementById("optBrake").checked
 let smi = document.getElementById("optSMI").checked
 let type = document.getElementById("optType").checked
+let note = document.getElementById("includeNote").checked
 
 document.getElementById("rowBrake").style.display = brake ? "" : "none"
 document.getElementById("rowSMI").style.display = smi ? "" : "none"
 document.getElementById("rowType").style.display = type ? "" : "none"
+
+document.getElementById("additionalNoteSection").style.display = note ? "block" : "none"
 
 }
 
