@@ -39,30 +39,27 @@ measurement.innerHTML=`
 
 }
 
-window.onload=function(){
+window.onload = function(){
 
-let today=new Date().toISOString().split('T')[0]
+let today = new Date().toISOString().split('T')[0]
 
 let date = document.getElementById("date")
 let dateBottom = document.getElementById("dateBottom")
 let csr = document.getElementById("csr")
 
-if(date) date.value=today
-if(dateBottom) dateBottom.value=today
-if(csr) csr.value="CSR-"+Date.now()
+if(date) date.value = today
+if(dateBottom) dateBottom.value = today
+if(csr) csr.value = "CSR-" + Date.now()
 
-// checkbox aman (tidak bikin error kalau tidak ada)
-let optBrake = document.getElementById("optBrake")
-let optSMI = document.getElementById("optSMI")
-let optType = document.getElementById("optType")
-let includeNote = document.getElementById("includeNote")
+// checkbox listener
+document.getElementById("optBrake")?.addEventListener("change", applyRowOption)
+document.getElementById("optSMI")?.addEventListener("change", applyRowOption)
+document.getElementById("optType")?.addEventListener("change", applyRowOption)
+document.getElementById("includeNote")?.addEventListener("change", applyRowOption)
 
-if(optBrake) optBrake.addEventListener("change",applyRowOption)
-if(optSMI) optSMI.addEventListener("change",applyRowOption)
-if(optType) optType.addEventListener("change",applyRowOption)
-if(includeNote) includeNote.addEventListener("change",applyRowOption)
-
+// jalankan pertama kali
 applyRowOption()
+
 initSignature()
 
 }
@@ -191,15 +188,31 @@ buttons.forEach(b => b.style.display = "inline-block")
 
 function applyRowOption(){
 
-let brake = document.getElementById("optBrake").checked
-let smi = document.getElementById("optSMI").checked
-let type = document.getElementById("optType").checked
-let note = document.getElementById("includeNote").checked
+let optBrake = document.getElementById("optBrake")
+let optSMI = document.getElementById("optSMI")
+let optType = document.getElementById("optType")
+let includeNote = document.getElementById("includeNote")
 
-document.getElementById("rowBrake").style.display = brake ? "" : "none"
-document.getElementById("rowSMI").style.display = smi ? "" : "none"
-document.getElementById("rowType").style.display = type ? "" : "none"
-document.getElementById("additionalNoteSection").style.display = note ? "block" : "none"
+let rowBrake = document.getElementById("rowBrake")
+let rowSMI = document.getElementById("rowSMI")
+let rowType = document.getElementById("rowType")
+let noteSection = document.getElementById("additionalNoteSection")
+
+if(optBrake && rowBrake){
+rowBrake.style.display = optBrake.checked ? "" : "none"
+}
+
+if(optSMI && rowSMI){
+rowSMI.style.display = optSMI.checked ? "" : "none"
+}
+
+if(optType && rowType){
+rowType.style.display = optType.checked ? "" : "none"
+}
+
+if(includeNote && noteSection){
+noteSection.style.display = includeNote.checked ? "block" : "none"
+}
 
 }
 
@@ -588,42 +601,6 @@ e.preventDefault()
 let pos = getPos(e)
 ctx.lineTo(pos.x,pos.y)
 ctx.stroke()
-}
-
-function endDraw(){
-drawing = false
-ctx.beginPath()
-}
-
-canvas.addEventListener("mousedown", startDraw)
-canvas.addEventListener("mousemove", draw)
-canvas.addEventListener("mouseup", endDraw)
-canvas.addEventListener("mouseleave", endDraw)
-
-canvas.addEventListener("touchstart", startDraw)
-canvas.addEventListener("touchmove", draw)
-canvas.addEventListener("touchend", endDraw)
-
-}
-
-function startDraw(e){
-drawing = true
-let pos = getPos(e)
-ctx.beginPath()
-ctx.moveTo(pos.x,pos.y)
-}
-
-function draw(e){
-
-if(!drawing) return
-
-e.preventDefault()
-
-let pos = getPos(e)
-
-ctx.lineTo(pos.x,pos.y)
-ctx.stroke()
-
 }
 
 function endDraw(){
