@@ -51,9 +51,9 @@ document.getElementById("csr").value="CSR-"+Date.now()
 document.getElementById("optBrake").addEventListener("change",applyRowOption)
 document.getElementById("optSMI").addEventListener("change",applyRowOption)
 document.getElementById("optType").addEventListener("change",applyRowOption)
+document.getElementById("includeNote").addEventListener("change", applyRowOption)
 
 applyRowOption()
-
 initSignature()
 
 }
