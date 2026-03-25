@@ -203,8 +203,6 @@ document.getElementById("additionalNoteSection").style.display = note ? "block" 
 
 }
 
-}
-
 function initSignature(){
 
 const canvas = document.getElementById("signature")
@@ -229,6 +227,40 @@ y: e.touches[0].clientY - rect.top
 return {
 x: e.clientX - rect.left,
 y: e.clientY - rect.top
+}
+}
+
+}
+
+function startDraw(e){
+drawing = true
+let pos = getPos(e)
+ctx.beginPath()
+ctx.moveTo(pos.x,pos.y)
+}
+
+function draw(e){
+if(!drawing) return
+e.preventDefault()
+
+let pos = getPos(e)
+ctx.lineTo(pos.x,pos.y)
+ctx.stroke()
+}
+
+function endDraw(){
+drawing = false
+ctx.beginPath()
+}
+
+canvas.addEventListener("mousedown", startDraw)
+canvas.addEventListener("mousemove", draw)
+canvas.addEventListener("mouseup", endDraw)
+canvas.addEventListener("mouseleave", endDraw)
+
+canvas.addEventListener("touchstart", startDraw)
+canvas.addEventListener("touchmove", draw)
+canvas.addEventListener("touchend", endDraw)
 
 }
 
