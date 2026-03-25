@@ -136,45 +136,6 @@ const { jsPDF } = window.jspdf
 let report = document.getElementById("report")
 
 let buttons = document.querySelectorAll(".noPrint")
-buttons.forEach(b => b.style.display = "none")
-
-const canvas = await html2canvas(report,{scale:2})
-const imgData = canvas.toDataURL("image/png")
-
-const pdf = new jsPDF("p","mm","a4")
-
-const imgWidth = 210
-const pageHeight = 297
-
-const imgHeight = canvas.height * imgWidth / canvas.width
-let heightLeft = imgHeight
-
-let position = 0
-
-pdf.addImage(imgData,'PNG',0,position,imgWidth,imgHeight)
-
-heightLeft -= pageHeight
-
-while(heightLeft > 0){
-
-position = heightLeft - imgHeight
-pdf.addPage()
-pdf.addImage(imgData,'PNG',0,position,imgWidth,imgHeight)
-
-heightLeft -= pageHeight
-
-}
-
-async function downloadPDF(){
-
-applyIncludeOption()
-applyRowOption()
-
-const { jsPDF } = window.jspdf
-
-let report = document.getElementById("report")
-
-let buttons = document.querySelectorAll(".noPrint")
 
 // sembunyikan tombol sementara
 buttons.forEach(b => b.style.display = "none")
@@ -214,10 +175,6 @@ pdf.save("CNC_Service_Report.pdf")
 
 // balikin tombol (ANTI BUG)
 buttons.forEach(b => b.style.display = "inline-block")
-
-}
-
-}
 
 }
 
