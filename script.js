@@ -229,8 +229,6 @@ y: e.touches[0].clientY - rect.top
 return {
 x: e.clientX - rect.left,
 y: e.clientY - rect.top
-}
-}
 
 }
 
