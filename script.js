@@ -115,33 +115,41 @@ measurement.innerHTML=`
 
 }
 
-window.onload=function(){
+window.addEventListener("load", function(){
 
-let today=new Date().toISOString().split('T')[0]
+let today = new Date().toISOString().split('T')[0]
 
-let date = document.getElementById("date")
-let dateBottom = document.getElementById("dateBottom")
-let csr = document.getElementById("csr")
+document.getElementById("date").value = today
+document.getElementById("dateBottom").value = today
+document.getElementById("csr").value = "CSR-" + Date.now()
 
-if(date) date.value=today
-if(dateBottom) dateBottom.value=today
-if(csr) csr.value="CSR-"+Date.now()
+// checkbox event
+document.getElementById("optBrake").addEventListener("change", applyRowOption)
+document.getElementById("optSMI").addEventListener("change", applyRowOption)
+document.getElementById("optType").addEventListener("change", applyRowOption)
+document.getElementById("includeNote").addEventListener("change", applyRowOption)
 
-// checkbox aman (tidak bikin error kalau tidak ada)
-let optBrake = document.getElementById("optBrake")
-let optSMI = document.getElementById("optSMI")
-let optType = document.getElementById("optType")
-let includeNote = document.getElementById("includeNote")
+// sync date bawah
+document.getElementById("date").addEventListener("change", function(){
+document.getElementById("dateBottom").value = this.value
+})
 
-if(optBrake) optBrake.addEventListener("change",applyRowOption)
-if(optSMI) optSMI.addEventListener("change",applyRowOption)
-if(optType) optType.addEventListener("change",applyRowOption)
-if(includeNote) includeNote.addEventListener("change",applyRowOption)
+// auto resize note
+const note = document.getElementById("additionalNote")
+if(note){
+note.addEventListener("input", function(){
+this.style.height = "auto"
+this.style.height = this.scrollHeight + "px"
+})
+}
 
+// 🔥 PENTING: langsung jalankan saat pertama load
 applyRowOption()
+
+// init signature
 initSignature()
 
-}
+})
 
 function updateActionInfo(select){
 
@@ -267,15 +275,26 @@ buttons.forEach(b => b.style.display = "inline-block")
 
 function applyRowOption(){
 
-let brake = document.getElementById("optBrake").checked
-let smi = document.getElementById("optSMI").checked
-let type = document.getElementById("optType").checked
-let note = document.getElementById("includeNote").checked
+let brake = document.getElementById("optBrake")
+let smi = document.getElementById("optSMI")
+let type = document.getElementById("optType")
+let note = document.getElementById("includeNote")
 
-document.getElementById("rowBrake").style.display = brake ? "" : "none"
-document.getElementById("rowSMI").style.display = smi ? "" : "none"
-document.getElementById("rowType").style.display = type ? "" : "none"
-document.getElementById("additionalNoteSection").style.display = note ? "block" : "none"
+if(brake){
+document.getElementById("rowBrake").style.display = brake.checked ? "" : "none"
+}
+
+if(smi){
+document.getElementById("rowSMI").style.display = smi.checked ? "" : "none"
+}
+
+if(type){
+document.getElementById("rowType").style.display = type.checked ? "" : "none"
+}
+
+if(note){
+document.getElementById("additionalNoteSection").style.display = note.checked ? "block" : "none"
+}
 
 }
 
